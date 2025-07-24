@@ -1,8 +1,10 @@
 @import "tailwindcss";
 @import "flowbite/src/themes/default";
+/* stylelint-disable-next-line at-rule-no-unknown */
 @plugin "flowbite/plugin";
-@source "../../node_modules/flowbite";
 
+/* stylelint-disable-next-line at-rule-no-unknown */
+@source "../../node_modules/flowbite";
 
 /* COLORS */
 
@@ -27,6 +29,7 @@ body {
 
 
 .main-container {
+    padding-top: 200px;
     max-width: 1536px;
     margin: 0 auto;
     min-height: 100vh;
