@@ -2,35 +2,40 @@
 import { content } from '~/data/1-Section';
 ---
 
-<div class='container'>
-  <img
-    src={content[0].image}
-    alt='imagen'
-    class='image-style'
-  />
-
-  <div class='container-right'>
-    <div class='text-container-right'>
-      <h1>{content[0].title}</h1>
-      <p>{content[0].subtitle}</p>
-    </div>
-
+<div class='background'>
+  <div class='container container-width'>
     <img
-      src={content[0].image2}
+      src={content[0].image}
       alt='imagen'
-      class='image-style-right'
+      class='image-style'
     />
+
+    <div class='container-right'>
+      <div class='text-container-right'>
+        <h1>{content[0].title}</h1>
+        <p>{content[0].subtitle}</p>
+      </div>
+
+      <img
+        src={content[0].image2}
+        alt='imagen'
+        class='image-style-right'
+      />
+    </div>
   </div>
 </div>
 
 <style>
   @reference 'tailwindcss';
 
+  .background {
+    @apply bg-gradient-to-b from-[var(--background)] to-[var(--background2)];
+  }
+
   .container {
     @apply grid grid-cols-[auto_1fr];
     @apply min-h-[calc(100vh-15rem)];
-    @apply py-[100px] px-[20px] 2xl:px-0 gap-20;
-    @apply mx-auto;
+    @apply pb-[160px] px-[20px] 2xl:px-0 gap-20;
   }
 
   .cols-start {

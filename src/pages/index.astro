@@ -1,8 +1,12 @@
 ---
 import BaseLayout from '~/layouts/BaseLayout.astro';
-import Section1 from '~/components/Sections/Section-1.astro';
+import Section1 from '~/components/Sections/1-Section.astro';
+import Section2 from '~/components/Sections/2-Section.astro';
+import Section0 from '~/components/Sections/0-HeroSection.astro';
 ---
 
 <BaseLayout title='Home'>
+  <Section0 />
   <Section1 />
+  <Section2 />
 </BaseLayout>
