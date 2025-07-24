@@ -1,0 +1,71 @@
+---
+import { content } from '~/data/1-Section';
+---
+
+<div class='container'>
+  <img
+    src={content[0].image}
+    alt='imagen'
+    class='image-style'
+  />
+
+  <div class='container-right'>
+    <div class='text-container-right'>
+      <h1>{content[0].title}</h1>
+      <p>{content[0].subtitle}</p>
+    </div>
+
+    <img
+      src={content[0].image2}
+      alt='imagen'
+      class='image-style-right'
+    />
+  </div>
+</div>
+
+<style>
+  @reference 'tailwindcss';
+
+  .container {
+    @apply grid grid-cols-[auto_1fr];
+    @apply min-h-[calc(100vh-15rem)];
+    @apply py-[100px] px-[20px] 2xl:px-0 gap-20;
+    @apply mx-auto;
+  }
+
+  .cols-start {
+    @apply col-start-2;
+  }
+
+  /* IMAGE */
+  .image-style {
+    @apply min-w-[200px] w-[400px] h-full  rounded-md;
+    @apply object-center object-cover;
+    @apply shadow-[0_0_10px_0_rgba(0,0,0,0.3)];
+  }
+
+  /* CONTAINER RIGHT */
+  .container-right {
+    @apply flex flex-col w-full h-full;
+    @apply justify-between;
+    @apply gap-10;
+  }
+
+  .text-container-right {
+    @apply w-full text-right;
+  }
+
+  .image-container-right {
+    @apply w-full h-auto flex;
+  }
+
+  .image-style-right {
+    @apply w-full h-[250px] flex object-cover object-center rounded-md;
+    @apply shadow-[0_0_10px_0_rgba(0,0,0,0.3)];
+  }
+
+  h1,
+  p {
+    @apply text-[var(--text-colors)];
+  }
+</style>

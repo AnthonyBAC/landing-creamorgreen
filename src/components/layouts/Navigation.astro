@@ -64,14 +64,13 @@ import { Image } from 'astro:assets';
   .nav-container {
     @apply grid grid-cols-[1fr_auto_1fr];
     @apply items-end;
-    @apply max-w-[1536px];
+    @apply max-w-[1200px];
     @apply mx-auto;
-    @apply px-8 pb-2 pt-4 w-full mb-5;
-    @apply border-b border-[var(--sub-colors)];
+    @apply px-8 2xl:px-0 pb-2 pt-4;
+
     @apply text-[var(--sub-colors)];
   }
-
-  .nav-right {
+  a de diseño y desarrollo de software .nav-right {
     @apply flex justify-self-end items-end;
   }
 
@@ -82,7 +81,7 @@ import { Image } from 'astro:assets';
   }
 
   .nav-items {
-    @apply text-[#333333];
+    @apply text-[var(--text-colors)];
     @apply font-medium;
     @apply transition-colors duration-300 cursor-pointer hover:text-[#7FB069];
   }

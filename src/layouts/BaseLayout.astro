@@ -16,6 +16,19 @@ import Header from '~/components/layouts/Header.astro';
       type='image/svg+xml'
       href='/favicon.svg'
     />
+    <link
+      rel='preconnect'
+      href='https://fonts.googleapis.com'
+    />
+    <link
+      rel='preconnect'
+      href='https://fonts.gstatic.com'
+      crossorigin
+    />
+    <link
+      href='https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;300;400;700&display=swap'
+      rel='stylesheet'
+    />
     <meta
       name='generator'
       content={Astro.generator}
@@ -30,7 +43,13 @@ import Header from '~/components/layouts/Header.astro';
     </div>
   </body>
 </html>
-
+<style is:global>
+  .main-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: auto;
+  }
+</style>
 <script>
   import 'flowbite';
 </script>
