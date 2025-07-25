@@ -7,13 +7,23 @@
 
 :root {
     --text-colors: #2C2C2C;
+    --h1-colors: #E8C6A3;
     --alt-title-colors: #fefefe;
-    --alt-text-colors: #E9C6A3;
-    --background: #F8FDF8;
+    --alt-text-colors: #E8C6A3;
+    --background: #F8FCF8;
     --background2: #FEFEFE;
     --icon-color: #7fb069;
     --bg-cards: #fefefe;
 
+
+    --text-button: #fefefe;
+    --alt-text-button: #7fb069;
+    --alt-text-hover-button: #fefefec9;
+    --bg-button: #7fb069;
+    --alt-bg-button: #fefefe;
+    --bg-hover-button: #7fb069ce;
+
+    --borders: #E8C6A3;
 }
 
 /* global styles */
@@ -30,6 +40,10 @@ body {
     padding: 0;
     margin: 0 auto;
 
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 .container-width {
@@ -49,16 +63,22 @@ button {
 }
 
 h1,
-h2,
 h3 {
     font-size: 2rem;
     font-weight: 700;
+    color: var(--h1-colors);
+}
+
+h2 {
+    font-size: 1rem;
+    font-weight: 300;
 }
 
 
 p {
     font-size: 1rem;
     line-height: 1.5;
+    font-weight: 300;
     letter-spacing: 0.01em;
     text-wrap: balance;
     font-family: 'Josefin Sans', sans-serif;
@@ -78,9 +98,15 @@ p {
         font-size: 1.3rem;
     }
 
-    h1,
-    h2,
+    h1 {
+        font-size: 2.6rem;
+    }
+
     h3 {
-        font-size: 2.25rem;
+        font-size: 1.4rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
     }
 }

@@ -13,7 +13,7 @@ import { content } from '~/data/1-Section';
     <div class='container-right'>
       <div class='text-container-right'>
         <h1>{content[0].title}</h1>
-        <p>{content[0].subtitle}</p>
+        <h2>{content[0].subtitle}</h2>
       </div>
 
       <img
@@ -67,10 +67,5 @@ import { content } from '~/data/1-Section';
   .image-style-right {
     @apply w-full h-[250px] flex object-cover object-center rounded-md;
     @apply shadow-[0_0_10px_0_rgba(0,0,0,0.3)];
-  }
-
-  h1,
-  p {
-    @apply text-[var(--text-colors)];
   }
 </style>

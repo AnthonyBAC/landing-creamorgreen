@@ -2,11 +2,14 @@
 import { content } from '~/data/3-Servicios';
 ---
 
-<div class='background'>
+<div
+  class='background'
+  id='servicios'
+>
   <div class='container container-width'>
     <div class='stagger-fadeup z-1'>
       <h1>{content[0].title}</h1>
-      <p>{content[0].subtitle}</p>
+      <h2>{content[0].subtitle}</h2>
     </div>
 
     <div
@@ -46,7 +49,7 @@ import { content } from '~/data/3-Servicios';
         class='accordion-body hidden'
         aria-labelledby='accordion-collapse-heading-1'
       >
-        <div class='main-content'>
+        <div class='main-content main-content-1'>
           <p class='main-content-title'>
             Flowbite is an open-source library of interactive components built
             on top of Tailwind CSS including buttons, dropdowns, modals,
@@ -94,7 +97,7 @@ import { content } from '~/data/3-Servicios';
         class='accordion-body hidden'
         aria-labelledby='accordion-collapse-heading-2'
       >
-        <div class='main-content'>
+        <div class='main-content main-content-2'>
           <p class='main-content-title'>
             Flowbite is first conceptualized and designed using the Figma
             software so everything you see in the library has a design
@@ -144,7 +147,7 @@ import { content } from '~/data/3-Servicios';
         class='accordion-body hidden'
         aria-labelledby='accordion-collapse-heading-3'
       >
-        <div class='main-content'>
+        <div class='main-content main-content-3'>
           <p class='main-content-title'>
             The main difference is that the core components from Flowbite are
             open source under the MIT license, whereas Tailwind UI is a paid
@@ -183,8 +186,8 @@ import { content } from '~/data/3-Servicios';
     @reference 'tailwindcss';
 
     :root {
-      --bg-button: #f8ede2e3;
-      --text-button: #e9c6a3;
+      --bg-button-accordion: #f8ede2e3;
+
       --text-main-content: #2c2c2c;
       --bg-main-content: #fefefe;
       --icon-color: #7fb069;
@@ -202,8 +205,8 @@ import { content } from '~/data/3-Servicios';
     }
 
     .button-accordion {
-      @apply flex items-center justify-between w-full p-5 border  border-[var(--text-button)]  gap-3;
-      @apply text-[var(--text-button)] hover:bg-[var(--bg-button)] dark:bg-[var(--bg-main-content)];
+      @apply flex items-center justify-between w-full p-5 border-1 border-[var(--borders)]  gap-3;
+      @apply text-[var(--alt-text-colors)] hover:bg-[var(--bg-button-accordion)] dark:bg-[var(--bg-main-content)];
       @apply transition-all duration-300 ease-in-out;
       @apply cursor-pointer;
     }
@@ -216,9 +219,12 @@ import { content } from '~/data/3-Servicios';
     .border-bottom-2 {
       @apply border-b-0;
     }
-
     .border-bottom-3 {
-      @apply rounded-b-md;
+      @apply rounded-b-md border-1;
+    }
+
+    .border-bottom-3[aria-expanded='true'] {
+      @apply rounded-b-none;
     }
 
     .border-top-1 {
@@ -230,9 +236,18 @@ import { content } from '~/data/3-Servicios';
     }
 
     .main-content {
-      @apply p-5 border border-b-0 border-[var(--text-button)];
+      @apply border-1 p-5;
 
       @apply bg-[var(--bg-main-content)] text-[var(--text-main-content)];
+    }
+
+    .main-content-1,
+    .main-content-2 {
+      @apply border-b-0 border-[var(--borders)];
+    }
+
+    .main-content-3 {
+      @apply border-t-0 rounded-b-md border-[var(--borders)];
     }
 
     .main-content-title {

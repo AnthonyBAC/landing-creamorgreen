@@ -1,0 +1,136 @@
+---
+import { content, cardsContent } from '~/data/4-Proyects';
+---
+
+<div class='background'>
+  <div class='container container-width'>
+    <div class='stagger-fadeup page-intro'>
+      <h1>{content[0].title}</h1>
+      <h2>{content[0].subtitle}</h2>
+    </div>
+    <div class='card-container'>
+      <div class='cards'>
+        <h3 class='title-card'>{cardsContent[0].title}</h3>
+        <p class='text-card'>
+          {cardsContent[0].subtitle}
+        </p>
+        <div class='flex justify-end w-full'>
+          <button
+            type='button'
+            class='fade-up button'
+            >Ver Proyecto</button
+          >
+        </div>
+      </div>
+      <div class='cards'>
+        <h3 class='title-card'>{cardsContent[0].title}</h3>
+        <p class='text-card'>
+          {cardsContent[0].subtitle}
+        </p>
+        <div class='flex justify-end w-full'>
+          <button
+            type='button'
+            class='fade-up button'
+            >Ver Proyecto</button
+          >
+        </div>
+      </div>
+      <div class='cards'>
+        <h3 class='title-card'>{cardsContent[0].title}</h3>
+        <p class='text-card'>
+          {cardsContent[0].subtitle}
+        </p>
+        <div class='flex justify-end w-full'>
+          <button
+            type='button'
+            class='fade-up button'
+            >Ver Proyecto</button
+          >
+        </div>
+      </div>
+      <div class='cards'>
+        <h3 class='title-card'>{cardsContent[0].title}</h3>
+        <p class='text-card'>
+          {cardsContent[0].subtitle}
+        </p>
+        <div class='flex justify-end w-full'>
+          <button
+            type='button'
+            class='fade-up button'
+            >Ver Proyecto</button
+          >
+        </div>
+      </div>
+      <div class='cards'>
+        <h3 class='title-card'>{cardsContent[0].title}</h3>
+        <p class='text-card'>
+          {cardsContent[0].subtitle}
+        </p>
+        <div class='flex justify-end w-full'>
+          <button
+            type='button'
+            class='fade-up button'
+            >Ver Proyecto</button
+          >
+        </div>
+      </div>
+      <div class='cards'>
+        <h3 class='title-card'>{cardsContent[0].title}</h3>
+        <p class='text-card'>
+          {cardsContent[0].subtitle}
+        </p>
+        <div class='flex justify-end w-full'>
+          <button
+            type='button'
+            class='fade-up button'
+            >Ver Proyecto</button
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  @reference 'tailwindcss';
+
+  .background {
+    @apply bg-[var(--background)];
+  }
+
+  .container {
+    @apply min-h-[calc(100vh-15rem)] flex flex-col justify-between relative;
+    @apply pb-[160px] px-8 2xl:px-0 gap-20;
+  }
+  .page-intro {
+    @apply text-center;
+  }
+
+  h1 {
+    @apply text-balance;
+  }
+
+  .title-card {
+    @apply text-2xl font-bold;
+  }
+
+  .text-card {
+    @apply text-xl  line-clamp-3;
+  }
+
+  .card-container {
+    @apply grid grid-cols-3 grid-rows-2 gap-10 justify-center items-center;
+  }
+
+  .cards {
+    @apply border-1 border-[var(--borders)] lg:border-0 lg:hover:border-[var(--borders)]  lg:hover:border-1 min-h-[220px] bg-[var(--bg-cards)] p-4 grid grid-rows-[auto_1fr_auto] text-center lg:text-left gap-3 max-h-[300px];
+    @apply w-full;
+    @apply rounded-md;
+    @apply shadow-[5px_5px_10px_0px_rgba(0,0,0,0.1)];
+  }
+
+  .button {
+    @apply w-full lg:w-[180px] cursor-pointer  font-bold text-lg;
+    @apply focus:outline-none text-[var(--text-button)] bg-[var(--bg-button)] hover:bg-[var(--bg-hover-button)] font-medium rounded-full  px-5 py-2;
+  }
+</style>
