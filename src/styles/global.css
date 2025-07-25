@@ -1,9 +1,6 @@
 @import "tailwindcss";
 @import "flowbite/src/themes/default";
-/* stylelint-disable-next-line at-rule-no-unknown */
 @plugin "flowbite/plugin";
-
-/* stylelint-disable-next-line at-rule-no-unknown */
 @source "../../node_modules/flowbite";
 
 /* COLORS */
