@@ -1,0 +1,64 @@
+/* src/styles/motion-fadeup.css */
+/* Estilos mínimos para Motion One Fade Up */
+
+/* Estados base - Motion One maneja las animaciones */
+.fade-up,
+.fadeup,
+.fade-up-small,
+.fade-up-large,
+.fade-up-fast,
+.fade-up-slow,
+.fade-up-delay-1,
+.fade-up-delay-2,
+.fade-up-delay-3,
+.fade-up-delay-4,
+.fade-up-delay-5,
+.stagger-fadeup>* {
+    /* Motion One maneja opacity y transform, así que no necesitamos mucho CSS */
+    /* Solo algunos estilos de apoyo si es necesario */
+}
+
+/* Opcional: Hover effects que se pueden combinar */
+.hover-lift:hover {
+    transform: translateY(-3px) !important;
+    transition: transform 0.2s ease-out;
+}
+
+.hover-scale:hover {
+    transform: scale(1.02) !important;
+    transition: transform 0.2s ease-out;
+}
+
+.hover-glow:hover {
+    box-shadow: 0 8px 25px rgba(127, 176, 105, 0.3);
+    transition: box-shadow 0.3s ease-out;
+}
+
+/* Utilidades de apoyo */
+.prevent-animation {
+    /* Para elementos que temporalmente no quieres que se animen */
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+/* Respeto por accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+
+    .fade-up,
+    .fadeup,
+    .fade-up-small,
+    .fade-up-large,
+    .fade-up-fast,
+    .fade-up-slow,
+    .fade-up-delay-1,
+    .fade-up-delay-2,
+    .fade-up-delay-3,
+    .fade-up-delay-4,
+    .fade-up-delay-5,
+    .stagger-fadeup>* {
+        /* Motion One respeta automáticamente prefers-reduced-motion */
+        /* Pero podemos agregar fallbacks */
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}

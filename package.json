@@ -11,7 +11,8 @@
   "dependencies": {
     "@tailwindcss/vite": "^4.1.11",
     "astro": "^5.12.3",
-    "flowbite": "^3.1.2"
+    "flowbite": "^3.1.2",
+    "motion": "^12.23.9"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.16",

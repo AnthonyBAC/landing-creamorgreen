@@ -1,7 +1,7 @@
 ---
+import '~/styles/motion.css';
 import '~/styles/global.css';
 import Header from '~/components/layouts/Header.astro';
-import Section0 from '~/components/Sections/0-HeroSection.astro';
 ---
 
 <!doctype html>
@@ -26,6 +26,7 @@ import Section0 from '~/components/Sections/0-HeroSection.astro';
       href='https://fonts.gstatic.com'
       crossorigin
     />
+
     <link
       href='https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;300;400;700&display=swap'
       rel='stylesheet'
@@ -43,6 +44,7 @@ import Section0 from '~/components/Sections/0-HeroSection.astro';
     <div class='main-container'>
       <slot />
     </div>
+    <script src='/src/animations/motion-fadeup.js'></script>
   </body>
 </html>
 <style is:global>
