@@ -1,0 +1,249 @@
+---
+import { content } from '~/data/3-Servicios';
+---
+
+<div class='background'>
+  <div class='container container-width'>
+    <div class='stagger-fadeup z-1'>
+      <h1>{content[0].title}</h1>
+      <p>{content[0].subtitle}</p>
+    </div>
+
+    <div
+      id='accordion-collapse'
+      data-accordion='collapse'
+      class='rounded-md'
+    >
+      <h2 id='accordion-collapse-heading-1'>
+        <button
+          type='button'
+          class='button-accordion border-bottom-1 border-top-1'
+          data-accordion-target='#accordion-collapse-body-1'
+          aria-expanded='true'
+          aria-controls='accordion-collapse-body-1'
+        >
+          <h1 class='button-title'>What is Flowbite?</h1>
+          <svg
+            data-accordion-icon
+            class='arrow-icon'
+            aria-hidden='true'
+            xmlns='http://www.w3.org/2000/svg'
+            fill='none'
+            viewBox='0 0 10 6'
+          >
+            <path
+              stroke='#fefefe'
+              stroke-linecap='round'
+              stroke-linejoin='round'
+              stroke-width='2'
+              d='M9 5 5 1 1 5'
+            ></path>
+          </svg>
+        </button>
+      </h2>
+      <div
+        id='accordion-collapse-body-1'
+        class='accordion-body hidden'
+        aria-labelledby='accordion-collapse-heading-1'
+      >
+        <div class='main-content'>
+          <p class='main-content-title'>
+            Flowbite is an open-source library of interactive components built
+            on top of Tailwind CSS including buttons, dropdowns, modals,
+            navbars, and more.
+          </p>
+          <p class='main-content-text'>
+            Check out this guide to learn how to <a
+              href='/docs/getting-started/introduction/'
+              class='text-blue-600 dark:text-blue-500 hover:underline'
+              >get started</a
+            > and start developing websites even faster with components on top of
+            Tailwind CSS.
+          </p>
+        </div>
+      </div>
+      <h2 id='accordion-collapse-heading-2'>
+        <button
+          type='button'
+          class='button-accordion border-bottom-2 border-top-2'
+          data-accordion-target='#accordion-collapse-body-2'
+          aria-expanded='false'
+          aria-controls='accordion-collapse-body-2'
+        >
+          <h1 class='button-title'>Is there a Figma file available?</h1>
+          <svg
+            data-accordion-icon
+            class='arrow-icon'
+            aria-hidden='true'
+            xmlns='http://www.w3.org/2000/svg'
+            fill='none'
+            viewBox='0 0 10 6'
+          >
+            <path
+              stroke='#fefefe'
+              stroke-linecap='round'
+              stroke-linejoin='round'
+              stroke-width='2'
+              d='M9 5 5 1 1 5'
+            ></path>
+          </svg>
+        </button>
+      </h2>
+      <div
+        id='accordion-collapse-body-2'
+        class='accordion-body hidden'
+        aria-labelledby='accordion-collapse-heading-2'
+      >
+        <div class='main-content'>
+          <p class='main-content-title'>
+            Flowbite is first conceptualized and designed using the Figma
+            software so everything you see in the library has a design
+            equivalent in our Figma file.
+          </p>
+          <p class='main-content-text'>
+            Check out the <a
+              href='https://flowbite.com/figma/'
+              class='text-blue-600 dark:text-blue-500 hover:underline'
+              >Figma design system</a
+            > based on the utility classes from Tailwind CSS and components from
+            Flowbite.
+          </p>
+        </div>
+      </div>
+      <h2 id='accordion-collapse-heading-3'>
+        <button
+          type='button'
+          class='button-accordion border-bottom-3'
+          data-accordion-target='#accordion-collapse-body-3'
+          aria-expanded='false'
+          aria-controls='accordion-collapse-body-3'
+        >
+          <h1 class='button-title'>
+            What are the differences between Flowbite and Tailwind UI?
+          </h1>
+          <svg
+            data-accordion-icon
+            class='arrow-icon'
+            aria-hidden='true'
+            xmlns='http://www.w3.org/2000/svg'
+            fill='none'
+            viewBox='0 0 10 6'
+          >
+            <path
+              stroke='#fefefe'
+              stroke-linecap='round'
+              stroke-linejoin='round'
+              stroke-width='2'
+              d='M9 5 5 1 1 5'
+            ></path>
+          </svg>
+        </button>
+      </h2>
+      <div
+        id='accordion-collapse-body-3'
+        class='accordion-body hidden'
+        aria-labelledby='accordion-collapse-heading-3'
+      >
+        <div class='main-content'>
+          <p class='main-content-title'>
+            The main difference is that the core components from Flowbite are
+            open source under the MIT license, whereas Tailwind UI is a paid
+            product. Another difference is that Flowbite relies on smaller and
+            standalone components, whereas Tailwind UI offers sections of pages.
+          </p>
+          <p class='main-content-title'>
+            However, we actually recommend using both Flowbite, Flowbite Pro,
+            and even Tailwind UI as there is no technical reason stopping you
+            from using the best of two worlds.
+          </p>
+          <p class='main-content-title'>Learn more about these technologies:</p>
+          <ul class='ps-5 text-gray-500 list-disc dark:text-gray-400'>
+            <li>
+              <a
+                href='https://flowbite.com/pro/'
+                class='text-blue-600 dark:text-blue-500 hover:underline'
+                >Flowbite Pro</a
+              >
+            </li>
+            <li>
+              <a
+                href='https://tailwindui.com/'
+                rel='nofollow'
+                class='text-blue-600 dark:text-blue-500 hover:underline'
+                >Tailwind UI</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    @reference 'tailwindcss';
+
+    :root {
+      --bg-button: #f8ede2e3;
+      --text-button: #e9c6a3;
+      --text-main-content: #2c2c2c;
+      --bg-main-content: #fefefe;
+      --icon-color: #7fb069;
+    }
+    .background {
+      @apply bg-gradient-to-b from-[var(--background2)] to-[var(--background)];
+    }
+    .container {
+      @apply min-h-[calc(100vh-15rem)] flex flex-col;
+      @apply py-[160px] px-8 2xl:px-0 gap-20;
+    }
+
+    h1 {
+      @apply text-balance;
+    }
+
+    .button-accordion {
+      @apply flex items-center justify-between w-full p-5 border  border-[var(--text-button)]  gap-3;
+      @apply text-[var(--text-button)] hover:bg-[var(--bg-button)] dark:bg-[var(--bg-main-content)];
+      @apply transition-all duration-300 ease-in-out;
+      @apply cursor-pointer;
+    }
+
+    .button-title {
+      @apply text-2xl;
+    }
+
+    .border-bottom-1,
+    .border-bottom-2 {
+      @apply border-b-0;
+    }
+
+    .border-bottom-3 {
+      @apply rounded-b-md;
+    }
+
+    .border-top-1 {
+      @apply rounded-t-md;
+    }
+
+    .accordion-body {
+      @apply transition-all duration-300 ease-in-out;
+    }
+
+    .main-content {
+      @apply p-5 border border-b-0 border-[var(--text-button)];
+
+      @apply bg-[var(--bg-main-content)] text-[var(--text-main-content)];
+    }
+
+    .main-content-title {
+      @apply mb-2 text-pretty;
+    }
+
+    .arrow-icon {
+      @apply size-7 flex items-center justify-center shrink-0;
+      @apply bg-[var(--icon-color)];
+      @apply rounded-full p-2;
+      @apply transition-transform duration-300 ease-in-out;
+    }
+  </style>
+</div>

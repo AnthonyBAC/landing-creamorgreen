@@ -49,3 +49,29 @@
         transform: none !important;
     }
 }
+
+/* HALF FADE UP */
+
+
+
+.fade-up-half.visible,
+.fadeup-half.visible {
+    opacity: 0.5 !important;
+    transform: translateY(0px);
+}
+
+/* FadeUp que va de 0% a 50% de opacidad */
+.fade-up-half,
+.fadeup-half {
+    /* El JavaScript maneja los estilos iniciales */
+}
+
+/* Para accesibilidad - respeta preferencias de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+
+    .fade-up-half,
+    .fadeup-half {
+        opacity: 0.5 !important;
+        transform: none !important;
+    }
+}
