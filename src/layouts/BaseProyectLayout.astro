@@ -46,7 +46,88 @@ import Whatsapp from '~/components/ui/Whatsapp.astro';
       name='generator'
       content={Astro.generator}
     />
-    <title>{Astro.props.title}</title>
+    <!-- TITLE -->
+    <title>
+      {
+        Astro.props.title ||
+          'Nuestros Proyectos | Ambientación Plantas | Creamor Green'
+      }
+    </title>
+    <!-- END TITLE -->
+    <!-- DESCRIPTION -->
+    <meta
+      name='description'
+      content={Astro.props.description ||
+        'Descubre +100 proyectos de ambientación con plantas en oficinas y eventos. Casos reales de transformación de espacios corporativos en Santiago.'}
+    />
+    <!-- END DESCRIPTION -->
+    <!-- OPENGRAPH -->
+    <meta
+      property='og:title'
+      content={Astro.props.title || 'Nuestros Proyectos | Creamor Green'}
+    />
+    <meta
+      property='og:description'
+      content={Astro.props.description ||
+        'Descubre +100 proyectos de ambientación con plantas en oficinas y eventos. Casos reales de transformación de espacios corporativos en Santiago.'}
+    />
+    <meta
+      property='og:image'
+      content={Astro.props.ogImage || '/slide_image-1.jpg'}
+    />
+    <meta
+      property='og:type'
+      content='website'
+    />
+    <meta
+      property='og:url'
+      content={Astro.url}
+    />
+    <!-- END OPENGRAPH -->
+
+    <!-- SCHEMA -->
+    <script type='application/ld+json'>
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "Creamor Green",
+        "description": "Especialistas en ambientación y diseño de espacios corporativos con plantas. Transformamos oficinas y eventos en Santiago.",
+        "areaServed": {
+          "@type": "City",
+          "name": "Santiago",
+          "addressCountry": "CL"
+        },
+        "serviceType": [
+          "Ambientación plantas oficinas",
+          "Ambientación plantas eventos",
+          "Diseño espacios corporativos",
+          "Plantas para eventos empresariales",
+          "Plantas para eventos matrimoniales",
+          "Plantas para eventos corporativos",
+          "Plantas para eventos religiosos",
+          "Jardines verticales oficinas"
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+56-9-XXXX-XXXX",
+          "contactType": "customer service",
+          "availableLanguage": "Spanish"
+        },
+        "url": "{Astro.site}"
+      }
+    </script>
+    <!-- END SCHEMA -->
+
+    <!-- CANONICAL -->
+    <link
+      rel='canonical'
+      href={Astro.url}
+    />
+    <meta
+      name='robots'
+      content='index, follow'
+    />
+    <!-- END CANONICAL -->
   </head>
 
   <body class='relative'>

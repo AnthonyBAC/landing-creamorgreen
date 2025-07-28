@@ -14,7 +14,9 @@ export async function getStaticPaths() {
 const { proyecto } = Astro.props;
 ---
 
-<BaseProyectLayout title={proyecto.titulo}>
+<BaseProyectLayout   title={`${proyecto.titulo} | Ambientación Plantas | Creamor Green`}
+description={`Proyecto de ambientación con plantas: ${proyecto.descripcion_corta}. Transformación espacios corporativos en Santiago por Creamor Green.`}
+ogImage={proyecto.imagen_principal || "/slide_image-1.jpg"}>
   <article class="proyecto-individual">
     
     <!-- Hero Section -->
