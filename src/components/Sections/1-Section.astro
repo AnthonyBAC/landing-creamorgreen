@@ -11,7 +11,7 @@ import { content } from '~/data/1-Section';
     />
 
     <div class='container-right'>
-      <div class='text-container-right'>
+      <div class='text-container-right border-r-3 pr-3 border-[var(--borders)]'>
         <h1>{content[0].title}</h1>
         <h2>{content[0].subtitle}</h2>
       </div>
@@ -29,7 +29,7 @@ import { content } from '~/data/1-Section';
   @reference 'tailwindcss';
 
   .background {
-    @apply bg-gradient-to-b from-[var(--background)] to-[var(--background2)];
+    @apply bg-[var(--background2)];
   }
 
   .container {

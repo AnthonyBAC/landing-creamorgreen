@@ -10,7 +10,7 @@ import { cards } from '~/data/2-Section';
       <h2>{content[0].subtitle}</h2>
     </div>
     <div class='container-bottom'>
-      <div class='cards card1'>
+      <div class='cards card1 animation-card'>
         <svg
           xmlns='http://www.w3.org/2000/svg'
           xmlns:xlink='http://www.w3.org/1999/xlink'
@@ -34,7 +34,7 @@ import { cards } from '~/data/2-Section';
         </svg>
         <h3>{cards[0].title}</h3>
       </div>
-      <div class='cards card2'>
+      <div class='cards card2 animation-card'>
         <svg
           xmlns='http://www.w3.org/2000/svg'
           xmlns:xlink='http://www.w3.org/1999/xlink'
@@ -51,7 +51,7 @@ import { cards } from '~/data/2-Section';
         >
         <h3>{cards[1].title}</h3>
       </div>
-      <div class='cards card3'>
+      <div class='cards card3 animation-card'>
         <svg
           xmlns='http://www.w3.org/2000/svg'
           xmlns:xlink='http://www.w3.org/1999/xlink'
@@ -70,7 +70,7 @@ import { cards } from '~/data/2-Section';
         >
         <h3>{cards[2].title}</h3>
       </div>
-      <div class='cards card4'>
+      <div class='cards card4 animation-card'>
         <svg
           xmlns='http://www.w3.org/2000/svg'
           xmlns:xlink='http://www.w3.org/1999/xlink'
@@ -120,13 +120,13 @@ import { cards } from '~/data/2-Section';
   @reference 'tailwindcss';
 
   .background {
-    @apply bg-[var(--icon-color)];
+    @apply bg-gradient-to-br from-[var(--bg-color-green)] via-[var(--bg-dark-green)] to-[var(--bg-dark-green)];
     @apply flex;
     @apply min-h-[calc(100vh-15rem)];
   }
   .container {
     @apply grid grid-rows-[auto_1fr] text-center;
-    @apply pb-[160px] px-[20px] lg:px-0 gap-20 mt-[160px];
+    @apply pb-[160px] px-[20px] 2xl:px-0 gap-20 mt-[160px];
     @apply mx-auto;
   }
 
@@ -137,7 +137,6 @@ import { cards } from '~/data/2-Section';
   .cards {
     @apply gap-20 items-center p-8 flex flex-col justify-between bg-[var(--bg-cards)];
     @apply w-full h-full rounded-md;
-    @apply shadow-[5px_2px_10px_0px_rgba(0,0,0,0.1)];
   }
 
   h1,
@@ -146,7 +145,7 @@ import { cards } from '~/data/2-Section';
   }
 
   .cards h3 {
-    @apply text-[var(--alt-text-colors)];
+    @apply text-[var(--text-green)];
     @apply whitespace-pre-line;
   }
 

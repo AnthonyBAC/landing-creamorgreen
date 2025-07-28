@@ -2,33 +2,63 @@
 import { content } from '~/data/Catalogo';
 ---
 
-<div class='container'>
-  <div class='stagger-fadeup container-width'>
-    <h1>{content[0].title}</h1>
-    <h2>{content[0].subtitle}</h2>
+<div class='bg-catalogo'>
+  <div class='container-width flex gap-10'>
+    <div class='stagger-fadeup container-left animation-card'>
+      <h1>{content[0].title}</h1>
+      <h2>{content[0].subtitle}</h2>
+
+      <a
+        href='/catalogo.pdf'
+        class='button'
+        >Descargar Catalogo</a
+      >
+    </div>
+    <div class='stagger-fadeup container-right animation-card'>
+      <h1>{content[0].title}</h1>
+      <h2>{content[0].subtitle}</h2>
+
+      <a
+        href='/catalogo.pdf'
+        class='button'
+        >Ver Proyectos</a
+      >
+    </div>
   </div>
-  <a
-    href='/catalogo.pdf'
-    class='fade-up button'
-    >Catalogo</a
-  >
 </div>
 
 <style>
   @reference 'tailwindcss';
 
-  .container {
-    @apply min-h-[calc(100vh-15rem)] min-w-full flex flex-col text-center justify-center items-center relative;
-    @apply py-[160px] px-8 2xl:px-0 gap-20;
-    @apply bg-[var(--icon-color)];
+  .bg-catalogo {
+    @apply flex justify-center items-center  bg-[var(--bg-beige-opacity50)] py-[160px];
+  }
+  .container-left {
+    @apply bg-gradient-to-br from-[var(--bg-color-green)] to-[var(--bg-dark-green)] flex flex-col justify-center items-center rounded-md gap-4 p-10;
+  }
+  .container-right {
+    @apply bg-gradient-to-br from-[var(--bg-color-proyects)] to-[var(--bg-dark-proyects)] flex flex-col justify-center items-center rounded-md gap-4 p-10;
   }
 
-  h1,
+  .container-left,
+  .container-right {
+    @apply size-[400px] text-center;
+  }
+
+  h1 {
+    @apply text-[var(--alt-title-colors)] text-xl;
+  }
   h2 {
-    @apply text-balance text-[var(--alt-title-colors)];
+    @apply text-[var(--alt-title-colors)] text-sm;
   }
   .button {
-    @apply w-full lg:w-[400px] lg:h-[100px] cursor-pointer  font-bold  text-4xl z-[1] flex items-center justify-center;
-    @apply focus:outline-none text-[var(--alt-text-button)] bg-[var(--alt-bg-button)] hover:bg-[var(--alt-text-hover-button)] rounded-md  px-5 py-2;
+    @apply w-full lg:w-[200px] lg:h-[50px] cursor-pointer  font-bold  text-sm z-[1] flex items-center justify-center;
+    @apply border-1 border-[var(--bg-white-opacity100)] text-[var(--text-button)] bg-[var(--bg-white-opacity20)] rounded-full  px-5 py-2;
+    @apply transition-all ease-in-out duration-500;
+  }
+
+  .button:hover,
+  .button:focus {
+    @apply bg-[var(--bg-white-opacity100)] text-[var(--text-colors)] border-none;
   }
 </style>

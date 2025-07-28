@@ -1,113 +1,151 @@
 ---
 import { content, cardsContent } from '~/data/4-Proyects';
+import { Image } from 'astro:assets';
 ---
 
-<div class='background'>
+<div class='bg-proyects'>
   <div class='container container-width'>
-    <div class='stagger-fadeup page-intro'>
-      <h1>{content[0].title}</h1>
+    <div
+      class='stagger-fadeup text-right border-r-3 pr-3 border-[var(--borders)]'
+    >
+      <h1 class='text-green-800'>{content[0].title}</h1>
       <h2>{content[0].subtitle}</h2>
     </div>
     <div class='card-container'>
-      <div class='cards'>
-        <h3 class='title-card'>{cardsContent[0].title}</h3>
-        <p class='text-card'>
-          {cardsContent[0].subtitle}
-        </p>
-        <div class='flex justify-end w-full'>
-          <button
-            type='button'
-            class='fade-up button'
-            >Ver Proyecto</button
+      <!-- Tarjeta principal -->
+      <div class='cards animation-card'>
+        <div class='image-container'>
+          <Image
+            class='image-style'
+            src='/slide_image-1.jpg'
+            alt='slide_image-1'
+            width={400}
+            height={400}
+          />
+        </div>
+        <div class='cards-content'>
+          <h3 class='title-card'>{cardsContent[0].title}</h3>
+          <p class='text-card'>
+            {cardsContent[0].subtitle}
+          </p>
+          <div class='item-meta'>
+            <p class='meta-item'>📍 {cardsContent[0].location}</p>
+            <p class='meta-item'>🌱 {cardsContent[0].plants}+ Plantas</p>
+            <p class='meta-item'>⏱️ {cardsContent[0].time} Semanas</p>
+          </div>
+          <a
+            href='#'
+            class='read-more'
+            >Leer caso completo</a
           >
         </div>
       </div>
-      <div class='cards'>
-        <h3 class='title-card'>{cardsContent[0].title}</h3>
-        <p class='text-card'>
-          {cardsContent[0].subtitle}
-        </p>
-        <div class='flex justify-end w-full'>
-          <button
-            type='button'
-            class='fade-up button'
-            >Ver Proyecto</button
+      <!-- Tarjeta 2 -->
+      <div class='cards card2 animation-card'>
+        <div class='image-container'>
+          <Image
+            class='image-style'
+            src='/slide_image-1.jpg'
+            alt='slide_image-1'
+            width={400}
+            height={400}
+          />
+        </div>
+        <div class='cards-content'>
+          <h3 class='title-card'>{cardsContent[0].title}</h3>
+          <p class='text-card'>
+            {cardsContent[0].subtitle}
+          </p>
+          <div class='item-meta'>
+            <p class='meta-item'>📍 {cardsContent[0].location}</p>
+            <p class='meta-item'>🌱 {cardsContent[0].plants}+ Plantas</p>
+            <p class='meta-item'>⏱️ {cardsContent[0].time} Semanas</p>
+          </div>
+          <a
+            href='#'
+            class='read-more'
+            >Leer caso completo</a
           >
         </div>
       </div>
-      <div class='cards'>
-        <h3 class='title-card'>{cardsContent[0].title}</h3>
-        <p class='text-card'>
-          {cardsContent[0].subtitle}
-        </p>
-        <div class='flex justify-end w-full'>
-          <button
-            type='button'
-            class='fade-up button'
-            >Ver Proyecto</button
+      <!-- Tarjeta 3 -->
+      <div class='cards card3 animation-card'>
+        <div class='image-container'>
+          <Image
+            class='image-style'
+            src='/slide_image-1.jpg'
+            alt='slide_image-1'
+            width={400}
+            height={400}
+          />
+        </div>
+        <div class='cards-content'>
+          <h3 class='title-card'>{cardsContent[0].title}</h3>
+          <p class='text-card'>
+            {cardsContent[0].subtitle}
+          </p>
+          <div class='item-meta'>
+            <p class='meta-item'>📍 {cardsContent[0].location}</p>
+            <p class='meta-item'>🌱 {cardsContent[0].plants}+ Plantas</p>
+            <p class='meta-item'>⏱️ {cardsContent[0].time} Semanas</p>
+          </div>
+          <a
+            href='#'
+            class='read-more'
+            >Leer caso completo</a
           >
         </div>
       </div>
-      <div class='cards'>
-        <h3 class='title-card'>{cardsContent[0].title}</h3>
-        <p class='text-card'>
-          {cardsContent[0].subtitle}
-        </p>
-        <div class='flex justify-end w-full'>
-          <button
-            type='button'
-            class='fade-up button'
-            >Ver Proyecto</button
-          >
-        </div>
-      </div>
-      <div class='cards'>
-        <h3 class='title-card'>{cardsContent[0].title}</h3>
-        <p class='text-card'>
-          {cardsContent[0].subtitle}
-        </p>
-        <div class='flex justify-end w-full'>
-          <button
-            type='button'
-            class='fade-up button'
-            >Ver Proyecto</button
-          >
-        </div>
-      </div>
-      <div class='cards'>
-        <h3 class='title-card'>{cardsContent[0].title}</h3>
-        <p class='text-card'>
-          {cardsContent[0].subtitle}
-        </p>
-        <div class='flex justify-end w-full'>
-          <button
-            type='button'
-            class='fade-up button'
-            >Ver Proyecto</button
-          >
-        </div>
-      </div>
+      <!-- Termina tarjetas -->
     </div>
   </div>
 </div>
-
 <style>
   @reference 'tailwindcss';
 
-  .background {
-    @apply bg-[var(--background)];
+  /* === LAYOUT PRINCIPAL === */
+  .bg-proyects {
+    @apply bg-[var(--background2)];
   }
 
   .container {
-    @apply min-h-[calc(100vh-15rem)] flex flex-col justify-between relative;
-    @apply pb-[160px] px-8 2xl:px-0 gap-20;
+    @apply min-h-[calc(100vh-15rem)] flex flex-col justify-between relative text-left;
+    @apply py-[160px] px-8 xl:px-0 gap-20;
   }
-  .page-intro {
-    @apply text-center;
-  }
+
+  /* === INTRODUCCIÓN === */
 
   h1 {
     @apply text-balance;
+  }
+
+  /* === CONTENEDOR DE TARJETAS === */
+  .card-container {
+    @apply grid grid-cols-1 grid-rows-3 gap-10 justify-center items-center;
+  }
+
+  /* === TARJETA PRINCIPAL === */
+  .cards {
+    @apply min-h-[400px] max-h-[400px] bg-[var(--bg-cards)] p-4 pl-0 grid grid-rows-[1fr] grid-cols-[auto_1fr] gap-10;
+    @apply w-full rounded-md;
+  }
+
+  /* === IMAGEN === */
+  .image-container {
+    @apply w-full h-full flex justify-center items-center;
+  }
+
+  .image-style {
+    @apply transition-all ease-in-out duration-500;
+  }
+
+  .cards:hover .image-container .image-style {
+    @apply brightness-75;
+  }
+
+  /* === CONTENIDO TEXTO === */
+  .cards-content {
+    @apply grid grid-rows-[auto_1fr_auto_auto] items-start p-[45px] gap-4;
   }
 
   .title-card {
@@ -115,22 +153,24 @@ import { content, cardsContent } from '~/data/4-Proyects';
   }
 
   .text-card {
-    @apply text-xl  line-clamp-3;
+    @apply line-clamp-5 overflow-hidden text-lg;
   }
 
-  .card-container {
-    @apply grid grid-cols-3 grid-rows-2 gap-10 justify-center items-center;
+  /* === METADATA === */
+  .item-meta {
+    @apply flex gap-2;
   }
 
-  .cards {
-    @apply border-1 border-transparent lg:border-transparent lg:hover:border-[var(--borders)]  lg:hover:border-1 min-h-[220px] bg-[var(--bg-cards)] p-4 grid grid-rows-[auto_1fr_auto] text-center lg:text-left gap-3 max-h-[300px];
-    @apply w-full;
-    @apply rounded-md;
-    @apply shadow-[5px_5px_10px_0px_rgba(0,0,0,0.1)];
+  .meta-item {
+    @apply text-sm;
   }
 
-  .button {
-    @apply w-full lg:w-[180px] cursor-pointer  font-bold text-lg;
-    @apply focus:outline-none text-[var(--text-button)] bg-[var(--bg-button)] hover:bg-[var(--bg-hover-button)] font-medium rounded-full  px-5 py-2;
+  /* === BOTÓN LEER MÁS === */
+  .read-more {
+    @apply inline-flex items-center gap-2 text-[#7fb069] font-medium transition-all duration-500 ease-in-out;
+  }
+
+  .read-more:hover {
+    @apply text-[#5a8a4a] translate-x-[10px];
   }
 </style>

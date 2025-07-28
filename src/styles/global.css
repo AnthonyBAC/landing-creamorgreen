@@ -22,8 +22,25 @@
     --bg-button: #7fb069;
     --alt-bg-button: #fefefe;
     --bg-hover-button: #7fb069ce;
-
+    /* Text */
+    --text-green: #7fb069;
+    /* Border */
     --borders: #E8C6A3;
+    /* Background */
+    --bg-green: #F8FCF8;
+    /* beige background opacity */
+    --bg-beige-opacity06: rgba(245, 240, 232, 0.06);
+    --bg-beige-opacity20: rgba(245, 240, 232, 0.20);
+    --bg-beige-opacity50: rgba(245, 240, 232, 0.50);
+    --bg-beige-opacity100: rgba(245, 240, 232, 1);
+    /* White background opacity */
+    --bg-white-opacity20: rgba(254, 254, 254, 0.2);
+    --bg-white-opacity100: rgba(254, 254, 254, 1);
+    /* gradient */
+    --bg-color-green: #7fb069;
+    --bg-dark-green: #5a8a4a;
+    --bg-color-proyects: #E8C6A3;
+    --bg-dark-proyects: #D4B491;
 }
 
 /* global styles */
@@ -68,7 +85,8 @@ h1,
 h3 {
     font-size: 2rem;
     font-weight: 700;
-    color: var(--h1-colors);
+    color: var(--text-green);
+
 }
 
 h2 {
@@ -111,4 +129,17 @@ p {
     h2 {
         font-size: 1.5rem;
     }
+}
+
+/* Hover Cards */
+
+.animation-card {
+    transition: all 0.5s ease;
+    transform: translateY(0px);
+    box-shadow: 2px 2px 8px 0px rgba(0, 0, 0, 0.04);
+}
+
+.animation-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 15px 35px 0px rgba(0, 0, 0, 0.1);
 }

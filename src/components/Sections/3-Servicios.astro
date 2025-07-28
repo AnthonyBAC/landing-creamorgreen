@@ -7,7 +7,7 @@ import { content } from '~/data/3-Servicios';
   id='servicios'
 >
   <div class='container container-width'>
-    <div class='stagger-fadeup z-1'>
+    <div class='stagger-fadeup z-1 border-l-3 pl-3 border-[var(--borders)]'>
       <h1>{content[0].title}</h1>
       <h2>{content[0].subtitle}</h2>
     </div>
@@ -193,7 +193,7 @@ import { content } from '~/data/3-Servicios';
       --icon-color: #7fb069;
     }
     .background {
-      @apply bg-gradient-to-b from-[var(--background2)] to-[var(--background)];
+      @apply bg-[var(--background2)];
     }
     .container {
       @apply min-h-[calc(100vh-15rem)] flex flex-col;

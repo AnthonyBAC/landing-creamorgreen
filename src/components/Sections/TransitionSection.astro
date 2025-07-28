@@ -1,14 +1,13 @@
 <div class='background'>
   <div class='container container-width'>
-    <div
-      class='border-y-1 border-[var(--borders)] min-h-[calc(100vh-40rem)] flex justify-between'
-    >
+    <div class='min-h-[calc(100vh-40rem)] flex justify-between'>
       <div
         class='stagger-fadeup z-1 flex items-center justify-center flex-col content_1'
       >
         <h1
           data-target='100'
           data-prefix='+'
+          class='trigger-element'
         >
           0
         </h1>
@@ -36,20 +35,18 @@
 </div>
 
 <script is:inline>
-  let hasExecuted = false; // Flag global para evitar re-ejecuciones
-
+  let hasExecuted = false;
   const observer = new IntersectionObserver(
     entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting && !hasExecuted) {
-          hasExecuted = true; // Marcar como ejecutado
+          hasExecuted = true;
 
-          // Función que solo se ejecuta una vez
           function animateCounter(element) {
             const target = parseInt(element.getAttribute('data-target'));
             const prefix = element.getAttribute('data-prefix') || '';
             const suffix = element.getAttribute('data-suffix') || '';
-            const duration = 2000;
+            const duration = 4000;
             const increment = target / (duration / 16);
             let current = 0;
 
@@ -63,10 +60,8 @@
             }, 16);
           }
 
-          // Ejecutar en todos los contadores
           document.querySelectorAll('[data-target]').forEach(animateCounter);
 
-          // Limpiar observer para liberar memoria
           observer.disconnect();
         }
       });
@@ -74,8 +69,7 @@
     { threshold: 0.3 },
   );
 
-  // Observar solo el primer elemento
-  const triggerElement = document.querySelector('.content_1');
+  const triggerElement = document.querySelector('.trigger-element');
   if (triggerElement) observer.observe(triggerElement);
 </script>
 
@@ -83,11 +77,11 @@
   @reference 'tailwindcss';
 
   .background {
-    @apply bg-[var(--background)];
+    @apply bg-[var(--bg-beige-opacity50)];
   }
 
   .container {
     @apply flex flex-col;
-    @apply pb-[160px] px-8 2xl:px-0 gap-20;
+    @apply px-8 2xl:px-0 gap-20;
   }
 </style>

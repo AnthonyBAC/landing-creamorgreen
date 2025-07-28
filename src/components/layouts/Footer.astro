@@ -1,0 +1,41 @@
+<footer>
+  <div class='min-h-full w-full container-width flex flex-col'>
+    <div class='flex justify-end gap-10'>
+      <div class='flex flex-col text-right gap-2'>
+        <h1>Contáctanos</h1>
+        <a>info@creamorgreen.cl</a>
+        <a>+56 9 1234 5678</a>
+      </div>
+      <div class='flex flex-col text-right gap-2'>
+        <h1>Empresa</h1>
+        <a>Proyectos</a>
+        <a>Catalogo</a>
+      </div>
+      <div class='flex flex-col text-right gap-2'>
+        <h1>Redes Sociales</h1>
+        <a>Instagram</a>
+        <a>Whatsapp</a>
+      </div>
+    </div>
+    <div class='flex h-full items-end justify-center'>
+      <p>© 2025 Cream Orgreen. Todos los derechos reservados.</p>
+    </div>
+  </div>
+</footer>
+<style>
+  @reference 'tailwindcss';
+
+  footer {
+    @apply min-h-[300px] w-full bg-gradient-to-br from-[var(--bg-color-green)] via-[var(--bg-dark-green)] to-[var(--bg-dark-green)] p-8 flex;
+  }
+
+  h1 {
+    @apply text-[var(--alt-title-colors)]
+    text-xl;
+  }
+  p,
+  a {
+    @apply text-[var(--alt-title-colors)];
+    @apply text-sm;
+  }
+</style>
