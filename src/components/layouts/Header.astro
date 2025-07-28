@@ -6,7 +6,6 @@ import Slider from '~/components/ui/Slider.astro';
 
 <header>
   <Navigation />
-  <hr class='lg:max-w-[1200px] mx-8 lg:mx-[auto] mb-5' />
   <Slider />
 </header>
 
@@ -16,6 +15,7 @@ import Slider from '~/components/ui/Slider.astro';
   header {
     @apply w-full  max-h-screen;
     @apply bg-[var(--background)] to-5%;
+    @apply overflow-hidden;
     /* @apply overflow-hidden; */
   }
 </style>

@@ -5,15 +5,28 @@ import { Image } from 'astro:assets';
 
 <div class='bg-proyects'>
   <div class='container container-width'>
-    <div
-      class='stagger-fadeup text-right border-r-3 pr-3 border-[var(--borders)]'
-    >
-      <h1 class='text-green-800'>{content[0].title}</h1>
-      <h2>{content[0].subtitle}</h2>
+    <div class='text-right border-r-8 pr-3 border-[var(--borders)]'>
+      <h1
+        class='text-green-800'
+        data-aos='fade-left'
+        data-aos-delay='200'
+      >
+        {content[0].title}
+      </h1>
+      <h2
+        data-aos='fade-left'
+        data-aos-delay='400'
+      >
+        {content[0].subtitle}
+      </h2>
     </div>
     <div class='card-container'>
       <!-- Tarjeta principal -->
-      <div class='cards animation-card'>
+      <div
+        class='cards animation-card'
+        data-aos='fade-up'
+        data-aos-delay='400'
+      >
         <div class='image-container'>
           <Image
             class='image-style'
@@ -41,7 +54,11 @@ import { Image } from 'astro:assets';
         </div>
       </div>
       <!-- Tarjeta 2 -->
-      <div class='cards card2 animation-card'>
+      <div
+        class='cards card2 animation-card'
+        data-aos='fade-up'
+        data-aos-delay='600'
+      >
         <div class='image-container'>
           <Image
             class='image-style'
@@ -69,7 +86,11 @@ import { Image } from 'astro:assets';
         </div>
       </div>
       <!-- Tarjeta 3 -->
-      <div class='cards card3 animation-card'>
+      <div
+        class='cards card3 animation-card'
+        data-aos='fade-up'
+        data-aos-delay='800'
+      >
         <div class='image-container'>
           <Image
             class='image-style'

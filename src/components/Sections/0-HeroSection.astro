@@ -4,11 +4,23 @@ import { content } from '~/data/0-HeroSection';
 
 <div class='container'>
   <div class='circles fade-up-half'></div>
-  <div class='stagger-fadeup container-width'>
-    <h1>{content[0].title}</h1>
-    <h2>{content[0].subtitle}</h2>
+  <div class='container-width'>
+    <h1
+      data-aos='fade-up'
+      data-aos-delay='200'
+    >
+      {content[0].title}
+    </h1>
+    <h2
+      data-aos='fade-up'
+      data-aos-delay='400'
+    >
+      {content[0].subtitle}
+    </h2>
   </div>
   <a
+    data-aos='fade-up'
+    data-aos-delay='600'
     href='#servicios'
     type='button'
     class='fade-up button'

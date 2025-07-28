@@ -3,8 +3,8 @@ import { Image } from 'astro:assets';
 ---
 
 <nav class='nav-container'>
-  <!-- Lado izquierdo -->
-  <div class='nav-left'>
+  <!-- Lado izquierdo (Desktop) -->
+  <div class='nav-left desktop-nav'>
     <ul class='nav-list'>
       <a href='/'>
         <li class='nav-items'>Inicio</li>
@@ -21,6 +21,16 @@ import { Image } from 'astro:assets';
     </ul>
   </div>
 
+  <!-- Botón hamburguesa (Mobile) -->
+  <button
+    class='hamburger-button mobile-nav'
+    id='hamburger-btn'
+  >
+    <span class='hamburger-line'></span>
+    <span class='hamburger-line'></span>
+    <span class='hamburger-line'></span>
+  </button>
+
   <!-- Centro - Logo -->
   <a
     href='/'
@@ -29,8 +39,8 @@ import { Image } from 'astro:assets';
     <Image
       src='/Logo-Creamor.svg'
       alt='Logo'
-      width={75}
-      height={75}
+      width={95}
+      height={95}
     />
   </a>
 
@@ -59,23 +69,94 @@ import { Image } from 'astro:assets';
       </svg>
     </a>
   </div>
+
+  <!-- Menú móvil (desplegable) -->
+  <div
+    class='mobile-menu'
+    id='mobile-menu'
+  >
+    <div
+      class='mobile-menu-overlay'
+      id='menu-overlay'
+    >
+    </div>
+    <div class='mobile-menu-content'>
+      <ul class='mobile-nav-list'>
+        <li>
+          <a
+            href='/'
+            class='mobile-nav-item'
+            >Inicio</a
+          >
+        </li>
+        <li>
+          <a
+            href='/servicios'
+            class='mobile-nav-item'
+            >Servicios</a
+          >
+        </li>
+        <li>
+          <a
+            href='/proyectos'
+            class='mobile-nav-item'
+            >Noticias</a
+          >
+        </li>
+        <li>
+          <a
+            href='/catalogo'
+            class='mobile-nav-item'
+            >Catálogo</a
+          >
+        </li>
+        <hr class='w-full h-[1px] bg-[var(--borders)] mb-4' />
+        <li>
+          <a
+            class='instagram-button'
+            href='https://instagram.com'
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            <svg
+              xmlns='http://www.w3.org/2000/svg'
+              viewBox='0 0 24 24'
+              width='100%'
+              height='100%'
+              class='instagram-icon'
+            >
+              <title>instagram</title>
+              <path
+                fill='currentColor'
+                aria-hidden='true'
+                focusable='false'
+                d='M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M7.6,4A3.6,3.6 0 0,0 4,7.6V16.4C4,18.39 5.61,20 7.6,20H16.4A3.6,3.6 0 0,0 20,16.4V7.6C20,5.61 18.39,4 16.4,4H7.6M17.25,5.5A1.25,1.25 0 0,1 18.5,6.75A1.25,1.25 0 0,1 17.25,8A1.25,1.25 0 0,1 16,6.75A1.25,1.25 0 0,1 17.25,5.5M12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9Z'
+              ></path>
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <hr class='w-full mx-8 lg:mx-[auto] mb-5 mt-2 hidden lg:flex col-span-3' />
 </nav>
 
 <style>
   @import 'tailwindcss';
+
   /* FONTS DEFINE ON GLOBAL.CSS */
   .nav-container {
-    @apply grid grid-cols-[1fr_auto_1fr];
-    @apply items-end;
+    @apply grid grid-cols-[auto_1fr] lg:grid-cols-[1fr_auto_1fr] justify-items-end lg:justify-items-start;
+    @apply items-center lg:items-end;
     @apply max-w-[1200px];
     @apply mx-auto;
     @apply px-8 2xl:px-0 pb-2 pt-4;
-
     @apply text-[var(--sub-colors)];
+    @apply relative;
   }
 
   .nav-right {
-    @apply flex justify-self-end items-end;
+    @apply justify-self-end items-end hidden lg:flex;
   }
 
   .nav-list {
@@ -86,8 +167,8 @@ import { Image } from 'astro:assets';
 
   .nav-items {
     @apply text-[var(--text-colors)];
-    @apply font-medium;
-    @apply transition-colors duration-300 cursor-pointer hover:text-[#7FB069];
+    @apply text-base;
+    @apply transition-all duration-500 cursor-pointer hover:text-[var(--bg-color-green)] hover:translate-y-[-2px];
   }
 
   .instagram-button {
@@ -99,17 +180,174 @@ import { Image } from 'astro:assets';
   }
 
   .instagram-button:hover {
-    @apply text-[#e4405f] size-[28px];
+    @apply text-[var(--bg-color-green)] translate-y-[-2px];
+  }
+
+  /* Botón hamburguesa */
+  .hamburger-button {
+    @apply hidden;
+    @apply flex-col justify-center items-center;
+    @apply w-8 h-8;
+    @apply bg-transparent border-none;
+    @apply cursor-pointer;
+    @apply transition-all duration-300;
+    @apply z-50 relative order-2;
+  }
+
+  .hamburger-line {
+    @apply block w-6 h-0.5;
+    @apply bg-[var(--text-colors)];
+    @apply transition-all duration-300 ease-in-out;
+    @apply my-0.5;
+  }
+
+  /* Animación del botón hamburguesa cuando está activo */
+  .hamburger-button.active .hamburger-line:nth-child(1) {
+    @apply transform rotate-45 translate-y-2;
+  }
+
+  .hamburger-button.active .hamburger-line:nth-child(2) {
+    @apply opacity-0;
+  }
+
+  .hamburger-button.active .hamburger-line:nth-child(3) {
+    @apply transform -rotate-45 -translate-y-2;
+  }
+
+  /* Menú móvil */
+  .mobile-menu {
+    @apply fixed top-0 left-0 w-full h-full;
+    @apply opacity-0 invisible;
+    @apply transition-all duration-300 ease-in-out;
+    @apply z-40;
+  }
+
+  .mobile-menu.active {
+    @apply opacity-100 visible;
+  }
+
+  .mobile-menu-overlay {
+    @apply absolute top-0 left-0 w-full h-full;
+    @apply bg-[#000000];
+    @apply opacity-80;
+  }
+
+  .mobile-menu-content {
+    @apply absolute top-0 left-0 w-full;
+    @apply bg-white;
+    @apply transform -translate-y-full;
+    @apply transition-transform duration-300 ease-in-out;
+    @apply shadow-lg;
+    @apply pt-20 pb-8;
+  }
+
+  .mobile-menu.active .mobile-menu-content {
+    @apply transform translate-y-0;
+  }
+
+  .mobile-nav-list {
+    @apply flex flex-col;
+    @apply list-none;
+    @apply m-0 p-0;
+    @apply px-8;
+  }
+
+  .mobile-nav-item {
+    @apply block;
+    @apply text-[var(--text-colors)];
+    @apply text-lg;
+    @apply py-4;
+    @apply border-b border-gray-200;
+    @apply transition-colors duration-300;
+    @apply cursor-pointer;
+  }
+
+  .mobile-nav-item:hover {
+    @apply text-[#7FB069];
+  }
+
+  .mobile-nav-item:last-child {
+    @apply border-b-0;
+  }
+
+  /* Clases de control de visibilidad */
+  .desktop-nav {
+    @apply block;
+  }
+
+  .mobile-nav {
+    @apply hidden;
   }
 
   /* MEDIA QUERIES */
   @media (max-width: 768px) {
-    .nav-container {
-      @apply grid-cols-[auto_1fr_auto] gap-4;
+    .desktop-nav {
+      @apply hidden;
     }
 
-    .nav-list {
-      @apply gap-3 text-sm;
+    .mobile-nav {
+      @apply flex;
+    }
+
+    .nav-center {
+      @apply justify-self-center order-1;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .nav-container {
+      @apply px-4;
+      @apply fixed top-0 z-50;
+      @apply w-full;
+      @apply bg-[var(--background)];
+    }
+
+    .nav-center img {
+      @apply w-16 h-16;
     }
   }
 </style>
+
+<script>
+  const hamburgerBtn = document.getElementById('hamburger-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuOverlay = document.getElementById('menu-overlay');
+  const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
+
+  function toggleMenu() {
+    hamburgerBtn?.classList.toggle('active');
+    mobileMenu?.classList.toggle('active');
+
+    if (mobileMenu?.classList.contains('active')) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+  }
+
+  function closeMenu() {
+    hamburgerBtn?.classList.remove('active');
+    mobileMenu?.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  // Solo agregar listeners si existen
+  hamburgerBtn?.addEventListener('click', toggleMenu);
+  menuOverlay?.addEventListener('click', closeMenu);
+
+  mobileNavItems?.forEach(item => {
+    item.addEventListener('click', closeMenu);
+  });
+
+  window.addEventListener('resize', function () {
+    if (window.innerWidth > 768) {
+      closeMenu();
+    }
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && mobileMenu?.classList.contains('active')) {
+      closeMenu();
+    }
+  });
+</script>
