@@ -1,0 +1,364 @@
+---
+// src/pages/proyectos/[slug].astro
+import BaseProyectLayout from '~/layouts/BaseProyectLayout.astro';
+import { Image } from 'astro:assets';
+import { proyectos } from '~/data/proyectos.js';
+
+export async function getStaticPaths() {
+  return proyectos.map((proyecto) => ({
+    params: { slug: proyecto.slug },
+    props: { proyecto },
+  }));
+}
+
+const { proyecto } = Astro.props;
+---
+
+<BaseProyectLayout title={proyecto.titulo}>
+  <article class="proyecto-individual">
+    
+    <!-- Hero Section -->
+    <section class="hero-section" data-aos="fade-up">
+      <div class="hero-image-container">
+        <Image
+          src={proyecto.imagenPrincipal}
+          alt={proyecto.titulo}
+          width={1200}
+          height={600}
+          class="hero-image"
+        />
+        <div class="hero-overlay">
+          <div class="hero-content">
+            <h1 class="hero-title">{proyecto.titulo}</h1>
+            <div class="proyecto-meta">
+              <div class="meta-item">
+                <span class="meta-icon">📍</span>
+                <span>{proyecto.ubicacion}</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-icon">🌱</span>
+                <span>{proyecto.plantas} Plantas</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-icon">⏱️</span>
+                <span>{proyecto.tiempo}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container-width py-12">
+      
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb" data-aos="fade-right">
+        <a href="/">Inicio</a>
+        <span class="separator">></span>
+        <a href="/proyectos">Proyectos</a>
+        <span class="separator">></span>
+        <span class="current">{proyecto.titulo}</span>
+      </nav>
+
+      <!-- Contenido Dinámico -->
+      <section class="dynamic-content">
+        <div class="content-wrapper">
+          {proyecto.contenido.map((item, index) => (
+            <div class="content-block">
+              
+              <!-- PÁRRAFO -->
+              {item.tipo === 'parrafo' && (
+                <p class="content-paragraph" data-aos="fade-up">
+                  {item.texto}
+                </p>
+              )}
+
+              <!-- TÍTULO -->
+              {item.tipo === 'titulo' && (
+                <>
+                  {item.nivel === 2 && (
+                    <h2 class="content-title h2" data-aos="fade-right">
+                      {item.texto}
+                    </h2>
+                  )}
+                  {item.nivel === 3 && (
+                    <h3 class="content-title h3" data-aos="fade-right">
+                      {item.texto}
+                    </h3>
+                  )}
+                </>
+              )}
+
+              <!-- IMAGEN INDIVIDUAL -->
+              {item.tipo === 'imagen' && (
+                <div class="content-image-container animation-card" data-aos="zoom-in">
+                  <Image
+                    src={item.src}
+                    alt={item.alt}
+                    width={800}
+                    height={500}
+                    class="content-image"
+                  />
+                  {item.descripcion && (
+                    <p class="image-description">{item.descripcion}</p>
+                  )}
+                </div>
+              )}
+
+              <!-- LISTA -->
+              {item.tipo === 'lista' && (
+                <ul class="content-list" data-aos="fade-up">
+                  {item.items.map((listItem) => (
+                    <li class="list-item">{listItem}</li>
+                  ))}
+                </ul>
+              )}
+
+              <!-- GALERÍA -->
+              {item.tipo === 'galeria' && (
+                <div class="content-gallery" data-aos="fade-up">
+                  <div class="gallery-grid">
+                    {item.imagenes.map((img, imgIndex) => (
+                      <div class="gallery-item animation-card" data-aos="zoom-in" >
+                        <Image
+                          src={img.src}
+                          alt={img.alt}
+                          width={400}
+                          height={300}
+                          class="gallery-image"
+                        />
+                        {img.descripcion && (
+                          <p class="gallery-description">{img.descripcion}</p>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="cta-section" data-aos="zoom-in">
+        <div class="cta-content">
+          <h3 class="cta-title">¿Te inspiró este proyecto?</h3>
+          <p class="cta-text">Contáctanos y creemos algo único para tu espacio</p>
+          <div class="cta-buttons">
+            <a href="/contacto" class="cta-button primary">Solicitar Cotización</a>
+            <a href="/proyectos" class="cta-button secondary">Ver Más Proyectos</a>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </article>
+</BaseProyectLayout>
+
+<style>
+@reference 'tailwindcss';
+
+/* === HERO SECTION === */
+.hero-section {
+  @apply relative w-full h-[60vh] min-h-[500px] overflow-hidden;
+}
+
+.hero-image-container {
+  @apply relative w-full h-full;
+}
+
+.hero-image {
+  @apply w-full h-full object-cover;
+}
+
+.hero-overlay {
+  @apply absolute inset-0 bg-black/50 flex items-end;
+}
+
+.hero-content {
+  @apply container mx-auto px-4 pb-12;
+}
+
+.categoria-badge {
+  @apply inline-block bg-[#7fb069] text-white px-4 py-2 rounded-full text-sm font-medium mb-4;
+}
+
+.hero-title {
+  @apply text-3xl md:text-5xl font-bold text-white mb-6;
+}
+
+.proyecto-meta {
+  @apply flex flex-wrap gap-6 text-white;
+}
+
+.meta-item {
+  @apply flex items-center gap-2 text-lg;
+}
+
+.meta-icon {
+  @apply text-xl;
+}
+
+/* === BREADCRUMB === */
+.breadcrumb {
+  @apply flex items-center gap-2 text-sm  py-6;
+}
+
+.breadcrumb a {
+  @apply hover:text-[#7fb069] transition-colors duration-200;
+}
+
+.separator {
+  @apply text-gray-400;
+}
+
+.current {
+  @apply text-gray-800 font-medium;
+}
+
+/* === CONTENIDO DINÁMICO === */
+.dynamic-content {
+  @apply py-8;
+}
+
+.content-wrapper {
+  @apply max-w-4xl mx-auto space-y-8;
+}
+
+.content-block {
+  @apply w-full;
+}
+
+/* === PÁRRAFOS === */
+.content-paragraph {
+  @apply text-lg  mb-6;
+}
+
+/* === TÍTULOS === */
+.content-title {
+  @apply font-bold text-[var(--bg-color-green)] mb-6;
+}
+
+.content-title.h2 {
+  @apply  border-l-8 border-[var(--borders)] pl-3;
+}
+
+.content-title.h3 {
+  @apply text-2xl;
+}
+
+/* === IMÁGENES INDIVIDUALES === */
+.content-image-container {
+  @apply my-12 text-center pt-8;
+}
+
+.content-image {
+  @apply w-full max-w-3xl mx-auto rounded-lg shadow-lg;
+}
+
+.image-description {
+  @apply text-sm  mt-4 italic max-w-2xl mx-auto;
+}
+
+/* === LISTAS === */
+.content-list {
+  @apply space-y-3 ml-6 mb-8;
+}
+
+.list-item {
+  @apply flex items-start gap-3  text-lg;
+}
+
+.list-item::before {
+  content: "🌱";
+  @apply flex-shrink-0;
+}
+
+/* === GALERÍAS === */
+.content-gallery {
+  @apply my-16;
+}
+
+.gallery-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
+}
+
+.gallery-item {
+  @apply rounded-lg overflow-hidden shadow-lg text-center bg-white;
+}
+
+.gallery-image {
+  @apply w-full h-64 object-cover;
+}
+
+.gallery-description {
+  @apply p-4 text-sm  bg-gray-50;
+}
+
+/* === CTA SECTION === */
+.cta-section {
+  @apply py-16 mt-12;
+}
+
+p{
+    @apply text-pretty;
+}
+.cta-content {
+  @apply text-center bg-[#f8fdf8] rounded-2xl p-12 max-w-4xl mx-auto;
+}
+
+.cta-title {
+  @apply text-3xl font-bold text-gray-800 mb-4;
+}
+
+.cta-text {
+  @apply text-lg text-gray-600 mb-8;
+}
+
+.cta-buttons {
+  @apply flex flex-col sm:flex-row gap-4 justify-center;
+}
+
+.cta-button {
+  @apply px-8 py-3 rounded-lg font-medium transition-all duration-200 text-center;
+}
+
+.cta-button.primary {
+  @apply bg-[#7fb069] text-white hover:bg-[#6a9556] hover:transform hover:-translate-y-1;
+}
+
+.cta-button.secondary {
+  @apply border-2 border-[#7fb069] text-[#7fb069] hover:bg-[#7fb069] hover:text-white;
+}
+
+
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .hero-title {
+    @apply text-2xl;
+  }
+  
+  .proyecto-meta {
+    @apply flex-col gap-3;
+  }
+  
+  .gallery-grid {
+    @apply grid-cols-1;
+  }
+  
+  .cta-buttons {
+    @apply flex-col;
+  }
+  
+  .content-title.h2 {
+    @apply text-2xl;
+  }
+  
+  .content-title.h3 {
+    @apply text-xl;
+  }
+}
+</style>

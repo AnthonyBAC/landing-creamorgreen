@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       card.addEventListener('mouseleave', () => {
         card.style.transform = 'translateY(0px)';
-        card.style.boxShadow = '2px 2px 8px 0px rgba(0, 0, 0, 0.04)';
+        card.style.boxShadow = '2px 2px 8px 0px rgba(0, 0, 0, 0.08)';
         card.style.transition = 'transform 0.2s ease, box-shadow 0.2s ease';
       });
     });
