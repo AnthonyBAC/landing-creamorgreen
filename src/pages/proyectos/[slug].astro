@@ -92,7 +92,7 @@ const { proyecto } = Astro.props;
               <!-- IMAGEN INDIVIDUAL -->
               {item.tipo === 'imagen' && (
                 <div class="content-image-container animation-card" data-aos="zoom-in">
-                  <Image
+                  <img
                     src={item.src}
                     alt={item.alt}
                     width={800}
@@ -108,7 +108,7 @@ const { proyecto } = Astro.props;
               <!-- LISTA -->
               {item.tipo === 'lista' && (
                 <ul class="content-list" data-aos="fade-up">
-                  {item.items.map((listItem) => (
+                  {item.items?.map((listItem) => (
                     <li class="list-item">{listItem}</li>
                   ))}
                 </ul>
@@ -118,9 +118,9 @@ const { proyecto } = Astro.props;
               {item.tipo === 'galeria' && (
                 <div class="content-gallery" data-aos="fade-up">
                   <div class="gallery-grid">
-                    {item.imagenes.map((img, imgIndex) => (
+                    {item.imagenes?.map((img, imgIndex) => (
                       <div class="gallery-item animation-card" data-aos="zoom-in" >
-                        <Image
+                        <img
                           src={img.src}
                           alt={img.alt}
                           width={400}
