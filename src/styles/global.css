@@ -89,13 +89,14 @@ button {
 }
 
 h1,
-h3 {
+h2 {
     font-size: 2rem;
     font-weight: 700;
     color: var(--text-green);
     font-family: 'Playfair Display', serif;
 
 }
+
 
 h2 {
     font-size: 1rem;
@@ -106,6 +107,12 @@ h2 {
     font-family: 'Source Sans 3', sans-serif;
 }
 
+h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-green);
+    font-family: 'Source Sans 3', serif;
+}
 
 p {
     font-size: 1rem;
