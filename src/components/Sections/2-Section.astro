@@ -152,7 +152,7 @@ import { cards } from '~/data/2-Section';
   }
   .container {
     @apply grid grid-rows-[auto_1fr] text-center;
-    @apply pb-[160px] px-[20px] 2xl:px-0 gap-20 mt-[160px];
+    @apply py-20 lg:py-[160px] px-[20px] 2xl:px-0 gap-20;
     @apply mx-auto;
   }
 
@@ -162,7 +162,7 @@ import { cards } from '~/data/2-Section';
 
   .cards {
     @apply gap-20 items-center p-8 flex flex-col justify-between bg-[var(--bg-cards)];
-    @apply w-full h-full rounded-md;
+    @apply w-full max-w-[400px] rounded-md;
   }
 
   h1,
@@ -173,6 +173,7 @@ import { cards } from '~/data/2-Section';
   .cards h3 {
     @apply text-[var(--text-green)];
     @apply whitespace-pre-line;
+    @apply text-3xl;
   }
 
   .icon-style {

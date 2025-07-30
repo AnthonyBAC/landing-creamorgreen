@@ -1,10 +1,11 @@
 ---
 import { Image } from 'astro:assets';
+import { socialData } from '~/data/socialData.js';
 ---
 
 <button
-  class='whatsappIcon fixed z-20 right-15 bottom-15 flex gap-3'
-  id='whatsappIcon'
+  class='whatsappIcon fixed z-20 right-15 bottom-15 flex gap-3 lg:flex hidden'
+  id='whatsapp'
 >
   <!-- <a
     href='https://wa.me/957242744'
@@ -16,7 +17,7 @@ import { Image } from 'astro:assets';
   </a> -->
   <a
     target='_blank'
-    href='https://wa.me/957242744'
+    href={socialData[1].url}
     class='flex justify-center items-center'
   >
     <Image

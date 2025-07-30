@@ -148,11 +148,10 @@ import { Image } from 'astro:assets';
   .nav-container {
     @apply grid grid-cols-[auto_1fr] lg:grid-cols-[1fr_auto_1fr] justify-items-end lg:justify-items-start;
     @apply items-center lg:items-end;
-    @apply max-w-[1200px];
+    @apply w-full lg:max-w-[1200px];
     @apply mx-auto;
     @apply px-8 2xl:px-0 pb-2 pt-4;
     @apply text-[var(--sub-colors)];
-    @apply relative;
   }
 
   .nav-right {
@@ -298,8 +297,7 @@ import { Image } from 'astro:assets';
     .nav-container {
       @apply px-4;
       @apply fixed top-0 z-50;
-      @apply w-full;
-      @apply bg-[var(--background)];
+      @apply w-full shadow-lg bg-[var(--background2)];
     }
 
     .nav-center img {

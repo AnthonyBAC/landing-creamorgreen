@@ -47,7 +47,7 @@ import { content } from '~/data/1-Section';
   .container {
     @apply grid grid-rows-[auto_1fr] lg:grid-cols-[auto_1fr] lg:grid-rows-[1fr];
     @apply min-h-[calc(100vh-15rem)];
-    @apply pb-[160px] px-[20px] 2xl:px-0 gap-20;
+    @apply pb-20 lg:py-[160px] px-[20px] 2xl:px-0 gap-20;
   }
 
   .cols-start {
@@ -56,7 +56,7 @@ import { content } from '~/data/1-Section';
 
   /* IMAGE */
   .image-style {
-    @apply min-w-[200px] w-[400px] h-full  rounded-md;
+    @apply min-w-[200px] w-[400px] max-h-[650px] h-full  rounded-md;
     @apply object-center object-cover;
     @apply shadow-[2px_2px_8px_0_rgba(0,0,0,0.1)];
     @apply order-2 lg:order-1;

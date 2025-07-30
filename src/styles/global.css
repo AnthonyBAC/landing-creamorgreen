@@ -52,6 +52,7 @@
 
 /* global styles */
 
+
 *,
 *::before,
 *::after {
@@ -66,15 +67,24 @@ body {
     padding: 0;
     margin: 0 auto;
 
+
 }
+
+
 
 html {
     scroll-behavior: smooth;
+
 }
+
+
 
 .container-width {
     max-width: 1200px;
     margin: 0 auto;
+
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 
@@ -111,7 +121,7 @@ h3 {
     font-size: 2rem;
     font-weight: 700;
     color: var(--text-green);
-    font-family: 'Source Sans 3', serif;
+    font-family: 'Playfair Display', serif;
 }
 
 p {
@@ -160,3 +170,5 @@ p {
 .animation-card:hover {
     box-shadow: 0px 15px 35px 0px rgba(0, 0, 0, 0.1) !important;
 }
+
+/* En global.css - Eliminar FOUC de todos los AOS */

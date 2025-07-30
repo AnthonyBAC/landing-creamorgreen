@@ -131,7 +131,7 @@ import { Image } from 'astro:assets';
 
   .container {
     @apply min-h-[calc(100vh-15rem)] flex flex-col justify-between relative text-left;
-    @apply py-[160px] px-8 xl:px-0 gap-20;
+    @apply py-20 lg:py-[160px] px-8 xl:px-0 gap-20;
   }
 
   /* === INTRODUCCIÓN === */
@@ -147,7 +147,7 @@ import { Image } from 'astro:assets';
 
   /* === TARJETA PRINCIPAL === */
   .cards {
-    @apply min-h-[400px] max-h-[400px] bg-[var(--bg-cards)] p-4 pl-0 grid grid-rows-[1fr] grid-cols-[auto_1fr] gap-10;
+    @apply min-h-[400px] h-full bg-[var(--bg-cards)] p-4 lg:pl-0 grid grid-rows-[auto_1fr] grid-cols-[1fr] lg:grid-rows-[1fr] lg:grid-cols-[auto_1fr] gap-10;
     @apply w-full rounded-md;
   }
 
@@ -166,7 +166,7 @@ import { Image } from 'astro:assets';
 
   /* === CONTENIDO TEXTO === */
   .cards-content {
-    @apply grid grid-rows-[auto_1fr_auto_auto] items-start p-[45px] gap-4;
+    @apply grid grid-rows-[auto_1fr_auto_auto] items-start lg:p-[45px] gap-4;
   }
 
   .title-card {

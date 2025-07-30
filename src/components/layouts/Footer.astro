@@ -1,6 +1,10 @@
+---
+import { socialData } from '~/data/socialData.js';
+---
+
 <footer>
   <div class='min-h-full w-full container-width flex flex-col'>
-    <div class='flex justify-end gap-10'>
+    <div class='flex justify-end gap-10 lg:flex-row flex-col'>
       <div class='flex flex-col text-right gap-2'>
         <h1>Contáctanos</h1>
         <a>info@creamorgreen.cl</a>
@@ -8,16 +12,24 @@
       </div>
       <div class='flex flex-col text-right gap-2'>
         <h1>Empresa</h1>
-        <a>Proyectos</a>
-        <a>Catalogo</a>
+        <a href='/proyectos'>Proyectos</a>
+        <a href='/catalogo'>Catalogo</a>
       </div>
       <div class='flex flex-col text-right gap-2'>
         <h1>Redes Sociales</h1>
-        <a>Instagram</a>
-        <a>Whatsapp</a>
+        {
+          socialData.map(social => (
+            <a
+              href={social.url}
+              target='_blank'
+            >
+              {social.name}
+            </a>
+          ))
+        }
       </div>
     </div>
-    <div class='flex h-full items-end justify-center'>
+    <div class='flex h-full items-end justify-center mt-10'>
       <p>© 2025 Creamor Green. Todos los derechos reservados.</p>
     </div>
   </div>
@@ -36,6 +48,10 @@
   p,
   a {
     @apply text-[var(--alt-title-colors)];
-    @apply text-sm;
+    @apply text-sm transition-colors duration-200 ease-in-out cursor-pointer;
+  }
+
+  a {
+    @apply hover:text-[var(--bg-beige-opacity50)];
   }
 </style>

@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     duration: 1000,
     easing: 'ease-in-out',
     once: true,
-    offset: 150,
+    offset: 100,
     disable: false,
   });
 

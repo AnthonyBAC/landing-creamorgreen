@@ -9,11 +9,13 @@ import { Image } from 'astro:assets';
   description='Descubre +100 proyectos de ambientación con plantas en oficinas y eventos. Casos reales de transformación de espacios corporativos en Santiago.'
   ogImage='/slide_image-1.jpg'
 >
-  <div class='container-width flex flex-col gap-10 py-[50px]'>
-    <h1 class='text-4xl font-bold border-l-8 border-[var(--borders)] pl-3'>
-      Proyectos
-    </h1>
+  <div class='container-width flex flex-col gap-10'>
     <div class='card-container'>
+      <h1
+        class='text-4xl font-bold border-l-8 border-[var(--borders)] pl-3 lg:mt-0'
+      >
+        Proyectos
+      </h1>
       <div
         class='cards animation-card'
         data-aos='fade-up'
@@ -95,12 +97,13 @@ import { Image } from 'astro:assets';
 
   /* === CONTENEDOR DE TARJETAS === */
   .card-container {
-    @apply grid grid-cols-1 gap-10 justify-center items-center grid-rows-[repeat(auto-fit, 400px)] p-8;
+    @apply grid grid-cols-1 gap-10 justify-center items-center  p-8 pb-20 mt-[100px] lg:mt-[0];
+    grid-template-rows: auto repeat(auto-fit, 400px);
   }
 
   /* === TARJETA PRINCIPAL === */
   .cards {
-    @apply min-h-[400px] max-h-[400px] bg-[var(--bg-cards)] p-4 pl-0 grid grid-rows-[1fr] grid-cols-[auto_1fr] gap-10;
+    @apply min-h-[400px] h-full bg-[var(--bg-cards)] p-4 lg:pl-0 grid grid-rows-[auto_1fr] grid-cols-[1fr] lg:grid-rows-[1fr] lg:grid-cols-[auto_1fr] gap-10;
     @apply w-full rounded-md;
   }
 
@@ -119,7 +122,7 @@ import { Image } from 'astro:assets';
 
   /* === CONTENIDO TEXTO === */
   .cards-content {
-    @apply grid grid-rows-[auto_1fr_auto_auto] items-start p-[45px] gap-4;
+    @apply grid grid-rows-[auto_1fr_auto_auto] items-start lg:p-[45px] gap-4;
   }
 
   .title-card {
