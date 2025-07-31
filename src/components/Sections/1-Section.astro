@@ -1,5 +1,9 @@
 ---
-import { content } from '~/data/1-Section';
+const {
+  image = { url: '/slide_image-1.jpg', alt: 'Transforma el ambiente' },
+  title = 'Transforma el ambiente',
+  subtitle = 'Crea espacios más saludables y productivos con nuestro diseño biofílico',
+} = Astro.props;
 ---
 
 <div class='background'>
@@ -7,8 +11,8 @@ import { content } from '~/data/1-Section';
     <img
       data-aos='fade-right'
       data-aos-delay='200'
-      src={content[0].image}
-      alt='imagen'
+      src={image.url}
+      alt={image.alt}
       class='image-style'
     />
 
@@ -18,13 +22,13 @@ import { content } from '~/data/1-Section';
           data-aos='fade-left'
           data-aos-delay='200'
         >
-          {content[0].title}
+          {title}
         </h1>
         <h2
           data-aos='fade-left'
           data-aos-delay='400'
         >
-          {content[0].subtitle}
+          {subtitle}
         </h2>
       </div>
 

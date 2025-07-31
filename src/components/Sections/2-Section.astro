@@ -162,7 +162,7 @@ import { cards } from '~/data/2-Section';
 
   .cards {
     @apply gap-20 items-center p-8 flex flex-col justify-between bg-[var(--bg-cards)];
-    @apply w-[250px] h-[300px] lg:max-w-[400px] rounded-md;
+    @apply w-[200px] h-[300px] xl:w-[250px] rounded-md;
   }
 
   h1,
@@ -177,7 +177,7 @@ import { cards } from '~/data/2-Section';
   .cards h3 {
     @apply text-[var(--text-green)];
     @apply whitespace-pre-line;
-    @apply text-3xl;
+    @apply !text-xl lg:!text-2xl;
   }
 
   .icon-style {

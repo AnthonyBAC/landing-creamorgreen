@@ -1,5 +1,8 @@
 ---
-import { content } from '~/data/0-HeroSection';
+const {
+  title = 'Diseño Verde para cada rincón de tu vida',
+  subtitle = 'Desde el living de tu casa hasta la sala de espera de tu consulta. Especializados en crear ambientes naturales que se adaptan a cualquier espacio y estilo de vida.',
+} = Astro.props;
 ---
 
 <div class='container'>
@@ -9,13 +12,13 @@ import { content } from '~/data/0-HeroSection';
       data-aos='fade-up'
       data-aos-delay='200'
     >
-      {content[0].title}
+      {title}
     </h1>
     <h2
       data-aos='fade-up'
       data-aos-delay='400'
     >
-      {content[0].subtitle}
+      {subtitle}
     </h2>
   </div>
   <a
@@ -33,7 +36,7 @@ import { content } from '~/data/0-HeroSection';
 
   .container {
     @apply min-h-[calc(100vh-15rem)] min-w-full flex flex-col text-center justify-center items-center relative;
-    @apply py-20 lg:pt-[160px] lg:py-0 px-8 lg:px-0 gap-20;
+    @apply py-20 lg:pt-[160px] lg:py-0 px-4 xl:px-0 gap-20;
     @apply bg-[var(--background2)];
   }
 
@@ -44,6 +47,7 @@ import { content } from '~/data/0-HeroSection';
   h1 {
     @apply text-balance;
   }
+
   .button {
     @apply w-full lg:w-[180px] cursor-pointer  font-bold text-lg z-[1];
     @apply focus:outline-none text-[var(--text-button)] bg-[var(--bg-button)] hover:bg-[var(--bg-hover-button)] font-medium rounded-full  px-5 py-2;

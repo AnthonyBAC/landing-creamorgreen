@@ -1,10 +1,12 @@
 ---
 import { content } from '~/data/Catalogo';
+
+const { catalogPDF = { url: '/catalogo.pdf', name: 'Catálogo' } } = Astro.props;
 ---
 
 <div class='bg-catalogo'>
   <div
-    class='container-width flex gap-10 justify-center lg:flex-row flex-col px-8 lg:px-0'
+    class='container-width flex gap-10 justify-center lg:flex-row flex-col px-4 lg:px-0'
   >
     <div
       class='container-left animation-card'
@@ -15,7 +17,7 @@ import { content } from '~/data/Catalogo';
       <h2>{content[0].subtitle}</h2>
 
       <a
-        href='/catalogo.pdf'
+        href={catalogPDF.url}
         class='button'
         >Descargar Catalogo</a
       >
@@ -44,10 +46,10 @@ import { content } from '~/data/Catalogo';
     @apply flex justify-center items-center  bg-[var(--bg-beige-opacity50)] py-20 lg:py-[160px];
   }
   .container-left {
-    @apply bg-gradient-to-br from-[#0F555A] via-[#0A4045] to-[#052B30] flex flex-col justify-center items-center rounded-md gap-4 p-10;
+    @apply bg-gradient-to-br from-[#0F555A] via-[#0A4045] to-[#052B30] flex flex-col justify-center items-center rounded-md gap-4 p-8 xl:p-10;
   }
   .container-right {
-    @apply bg-gradient-to-br from-[var(--bg-color-proyects)] to-[var(--bg-dark-proyects)] flex flex-col justify-center items-center rounded-md gap-4 p-10;
+    @apply bg-gradient-to-br from-[var(--bg-color-proyects)] to-[var(--bg-dark-proyects)] flex flex-col justify-center items-center rounded-md gap-4 p-8 xl:p-10;
   }
 
   .container-left,

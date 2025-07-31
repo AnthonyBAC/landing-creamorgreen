@@ -51,7 +51,7 @@ ogImage={proyecto.imagenPrincipal || "/slide_image-1.jpg"}>
       </div>
     </section>
 
-    <div class="container-width py-12 px-8 lg:px-0">
+    <div class="max-w-4xl mx-auto py-12 px-4 xl:px-0">
       
       <!-- Breadcrumb -->
       <nav class="breadcrumb" data-aos="fade-right">
@@ -143,17 +143,27 @@ ogImage={proyecto.imagenPrincipal || "/slide_image-1.jpg"}>
         </div>
       </section>
 
-      <!-- CTA Section -->
-      <section class="cta-section" data-aos="zoom-in">
-        <div class="cta-content">
-          <h3 class="cta-title">¿Te inspiró este proyecto?</h3>
-          <p class="cta-text">Contáctanos y creemos algo único para tu espacio</p>
-          <div class="cta-buttons">
-            <a href="/contacto" class="cta-button primary">Solicitar Cotización</a>
-            <a href="/proyectos" class="cta-button secondary">Ver Más Proyectos</a>
+           <!-- Información adicional -->
+           <div class='info-section lg:mb-20'>
+            <div class='info-card'>
+              <h3>¿Te inspiró este proyecto?</h3>
+              <p>Contáctanos y creemos algo único para tu espacio</p>
+              <div class='cta-buttons'>
+                <a
+                  href='/#servicios'
+                  class='cta-button primary'
+                >
+                  Contactanos
+                </a>
+                <a
+                  href='/#catalogo'
+                  class='cta-button secondary'
+                >
+                  Descargar Catálogo
+                </a>
+              </div>
+            </div>
           </div>
-        </div>
-      </section>
 
     </div>
   </article>
@@ -226,7 +236,7 @@ ogImage={proyecto.imagenPrincipal || "/slide_image-1.jpg"}>
 }
 
 .content-wrapper {
-  @apply max-w-4xl mx-auto space-y-8;
+  @apply w-full gap-0;
 }
 
 .content-block {
@@ -300,40 +310,44 @@ ogImage={proyecto.imagenPrincipal || "/slide_image-1.jpg"}>
 }
 
 /* === CTA SECTION === */
-.cta-section {
-  @apply py-16 mt-12;
-}
+
 
 p{
     @apply text-pretty;
 }
-.cta-content {
-  @apply text-center bg-[#f8fdf8] rounded-2xl p-12 max-w-4xl mx-auto;
-}
+.info-section {
+    @apply col-span-full mt-12;
+  }
 
-.cta-title {
-  @apply text-3xl font-bold text-gray-800 mb-4;
-}
+  .info-card {
+    @apply bg-gradient-to-br from-[#f8fdf8] to-[#e8f5e8] rounded-2xl p-8 text-center;
+    @apply border border-[#7fb069]/20;
+  }
 
-.cta-text {
-  @apply text-lg text-gray-600 mb-8;
-}
+  .info-card h3 {
+    @apply text-2xl font-bold text-[#0F555A] mb-4;
+  }
 
-.cta-buttons {
-  @apply flex flex-col sm:flex-row gap-4 justify-center;
-}
+  .info-card p {
+    @apply text-gray-700 mb-6 text-lg;
+  }
 
-.cta-button {
-  @apply px-8 py-3 rounded-lg font-medium transition-all duration-200 text-center;
-}
+  .cta-buttons {
+    @apply flex flex-col sm:flex-row gap-4 justify-center;
+  }
 
-.cta-button.primary {
-  @apply bg-[#7fb069] text-white hover:bg-[#6a9556] hover:transform hover:-translate-y-1;
-}
+  .cta-button {
+    @apply px-8 py-3 rounded-lg font-medium transition-all duration-200 text-center;
+    @apply hover:transform hover:-translate-y-1 hover:shadow-lg;
+  }
 
-.cta-button.secondary {
-  @apply border-2 border-[#7fb069] text-[#7fb069] hover:bg-[#7fb069] hover:text-white;
-}
+  .cta-button.primary {
+    @apply bg-[#7fb069] text-white hover:bg-[#6a9556];
+  }
+
+  .cta-button.secondary {
+    @apply border-2 border-[#7fb069] text-[#7fb069] hover:bg-[#7fb069] hover:text-white;
+  }
 
 
 
@@ -351,10 +365,7 @@ p{
     @apply grid-cols-1;
   }
   
-  .cta-buttons {
-    @apply flex-col;
-  }
-  
+
   .content-title.h2 {
     @apply text-2xl;
   }

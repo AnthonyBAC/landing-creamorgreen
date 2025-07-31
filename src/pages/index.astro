@@ -7,45 +7,123 @@ import Section3 from '~/components/Sections/3-Servicios.astro';
 import Section4 from '~/components/Sections/4-Proyects.astro';
 import TransitionSection from '~/components/Sections/TransitionSection.astro';
 import Catalogo from '~/components/Sections/Catalogo.astro';
+
+// IMPORTAR FUNCIONES DE STRAPI
+import { getHomepage, getFAQ, getFeaturedProjects } from '~/lib/strapi.js';
+
+// VALORES POR DEFECTO PARA HOMEPAGE
+const defaultHomepage = {
+  bannerImages: [],
+  designSectionTitle: 'Diseño Verde para Cada Rincón de tu Vida',
+  designSectionSubtitle:
+    'Creamos espacios únicos que combinan naturaleza y diseño',
+  transformImage: {
+    url: '/leaf-placeholder.svg',
+    alt: 'Transforma el ambiente',
+  },
+  transformTitle: 'Transforma el Ambiente',
+  transformSubtitle: 'Con nuestro diseño biofílico creamos espacios únicos',
+  catalogPDF: { url: '/catalogo.pdf', name: 'Catálogo' },
+};
+
+// VALORES POR DEFECTO PARA PROYECTOS
+const defaultProyectos = [
+  {
+    id: 1,
+    title: 'Restaurante Verde Providencia',
+    slug: 'restaurante-verde-providencia',
+    shortDescription: 'Proyecto de ejemplo mientras se configura Strapi',
+    location: 'Las Condes',
+    plantCount: 40,
+    duration: 5,
+    durationType: 'semanas',
+    featuredImage: {
+      url: '/leaf-placeholder.svg',
+      alt: 'Restaurante Verde Providencia',
+    },
+    featured: true,
+  },
+  {
+    id: 2,
+    title: 'Oficina Corporativa Sustentable',
+    slug: 'oficina-corporativa-sustentable',
+    shortDescription: 'Proyecto de ejemplo mientras se configura Strapi',
+    location: 'Providencia',
+    plantCount: 60,
+    duration: 3,
+    durationType: 'semanas',
+    featuredImage: {
+      url: '/leaf-placeholder.svg',
+      alt: 'Oficina Corporativa',
+    },
+    featured: true,
+  },
+  {
+    id: 3,
+    title: 'Casa Familiar Ecológica',
+    slug: 'casa-familiar-ecologica',
+    shortDescription: 'Proyecto de ejemplo mientras se configura Strapi',
+    location: 'Santiago',
+    plantCount: 25,
+    duration: 4,
+    durationType: 'semanas',
+    featuredImage: { url: '/leaf-placeholder.svg', alt: 'Casa Familiar' },
+    featured: true,
+  },
+];
+
+// OBTENER DATOS CON FALLBACKS
+const homepage = (await getHomepage()) || defaultHomepage;
+const {
+  title: faqTitle,
+  subtitle: faqSubtitle,
+  faqs,
+} = (await getFAQ()) || { title: '', subtitle: '', faqs: [] };
+const proyectos = (await getFeaturedProjects()) || defaultProyectos;
 ---
 
 <BaseLayout
   title='Ambientación Plantas | Espacios Únicos | Santiago'
   description='Transformamos oficinas y eventos con plantas y jardines únicos. +100 proyectos realizados en Santiago. Diseños personalizados que elevan cada espacio.'
   ogImage='/Logo-Creamor.svg'
+  bannerImages={homepage.bannerImages}
 >
-  <!-- Hero Section con ID -->
   <section id='inicio'>
-    <Section0 />
+    <Section0
+      title={homepage.designSectionTitle}
+      subtitle={homepage.designSectionSubtitle}
+    />
   </section>
 
-  <!-- Sección 1 -->
   <section>
-    <Section1 />
+    <Section1
+      image={homepage.transformImage}
+      title={homepage.transformTitle}
+      subtitle={homepage.transformSubtitle}
+    />
   </section>
 
-  <!-- Sección 2 -->
   <section>
     <Section2 />
   </section>
 
-  <!-- Servicios con ID -->
   <section id='servicios'>
-    <Section3 />
+    <Section3
+      title={faqTitle}
+      subtitle={faqSubtitle}
+      faqs={faqs}
+    />
   </section>
 
-  <!-- Transición -->
   <section>
     <TransitionSection />
   </section>
 
-  <!-- Proyectos -->
   <section>
-    <Section4 />
+    <Section4 proyectos={proyectos} />
   </section>
 
-  <!-- Catálogo con ID -->
   <section id='catalogo'>
-    <Catalogo />
+    <Catalogo catalogPDF={homepage.catalogPDF} />
   </section>
 </BaseLayout>

@@ -4,6 +4,8 @@ import Header from '~/components/layouts/Header.astro';
 import Footer from '~/components/layouts/Footer.astro';
 import Whatsapp from '~/components/ui/Whatsapp.astro';
 import Slider from '~/components/ui/Slider.astro';
+
+const { bannerImages, ...props } = Astro.props;
 ---
 
 <!doctype html>
@@ -134,7 +136,7 @@ import Slider from '~/components/ui/Slider.astro';
   <body class='relative'>
     <Whatsapp />
     <Header />
-    <Slider />
+    <Slider bannerImages={bannerImages} />
     <div class='main-container'>
       <slot />
     </div>
