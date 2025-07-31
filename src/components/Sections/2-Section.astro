@@ -146,7 +146,7 @@ import { cards } from '~/data/2-Section';
   @reference 'tailwindcss';
 
   .background {
-    @apply bg-gradient-to-br from-[var(--bg-color-green)] via-[var(--bg-dark-green)] to-[var(--bg-dark-green)];
+    @apply bg-gradient-to-br from-[#0F555A] via-[#0A4045] to-[#052B30];
     @apply flex;
     @apply min-h-[calc(100vh-15rem)];
   }
@@ -157,17 +157,21 @@ import { cards } from '~/data/2-Section';
   }
 
   .container-bottom {
-    @apply flex justify-center flex-col lg:flex-row  gap-10;
+    @apply flex justify-center flex-col lg:flex-row items-center  gap-10;
   }
 
   .cards {
     @apply gap-20 items-center p-8 flex flex-col justify-between bg-[var(--bg-cards)];
-    @apply w-full max-w-[400px] rounded-md;
+    @apply w-[250px] h-[300px] lg:max-w-[400px] rounded-md;
   }
 
   h1,
   h2 {
     @apply text-[var(--alt-title-colors)];
+  }
+
+  h3 {
+    @apply !text-[#0F555A];
   }
 
   .cards h3 {
@@ -177,7 +181,7 @@ import { cards } from '~/data/2-Section';
   }
 
   .icon-style {
-    @apply aspect-square object-contain;
-    @apply size-32 text-[var(--icon-color)];
+    @apply aspect-square;
+    @apply size-32 text-[#0F555A];
   }
 </style>

@@ -7,7 +7,7 @@ import { Image } from 'astro:assets';
   <div class='container container-width'>
     <div class='text-right border-r-8 pr-3 border-[var(--borders)]'>
       <h1
-        class='text-green-800'
+        class='!text-[#0F555A]'
         data-aos='fade-left'
         data-aos-delay='200'
       >
@@ -170,7 +170,7 @@ import { Image } from 'astro:assets';
   }
 
   .title-card {
-    @apply text-2xl font-bold;
+    @apply text-2xl font-bold !text-[#0F555A];
   }
 
   .text-card {
@@ -188,10 +188,10 @@ import { Image } from 'astro:assets';
 
   /* === BOTÓN LEER MÁS === */
   .read-more {
-    @apply inline-flex items-center gap-2 text-[#7fb069] font-medium transition-all duration-500 ease-in-out;
+    @apply inline-flex items-center gap-2 text-[#0F555A] font-medium transition-all duration-500 ease-in-out;
   }
 
   .read-more:hover {
-    @apply text-[#5a8a4a] translate-x-[10px];
+    @apply translate-x-[10px];
   }
 </style>

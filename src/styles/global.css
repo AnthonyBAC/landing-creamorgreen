@@ -6,21 +6,22 @@
 /* COLORS */
 
 :root {
-    --h1-colors: #E8C6A3;
     --alt-title-colors: #fefefe;
-    --alt-text-colors: #E8C6A3;
-    --background: #F8FCF8;
+
+
     --background2: #FEFEFE;
-    --icon-color: #7fb069;
+
     --bg-cards: #fefefe;
 
-
+    /* catalogo text buttons */
     --text-button: #fefefe;
-    --alt-text-button: #7fb069;
     --alt-text-hover-button: #fefefec9;
+
+    /* hero button */
     --bg-button: #7fb069;
-    --alt-bg-button: #fefefe;
     --bg-hover-button: #7fb069ce;
+
+
     /* Text */
     --text-green: #7fb069;
     --text-colors: #2C2C2C;
@@ -82,9 +83,14 @@ html {
 .container-width {
     max-width: 1200px;
     margin: 0 auto;
+    overflow: visible;
+}
 
-    overflow-x: hidden;
-    overflow-y: hidden;
+@media (max-width: 768px) {
+    .container-width {
+
+        overflow: hidden;
+    }
 }
 
 
@@ -102,7 +108,7 @@ h1,
 h2 {
     font-size: 2rem;
     font-weight: 700;
-    color: var(--text-green);
+    color: #0F555A;
     font-family: 'Playfair Display', serif;
 
 }
@@ -167,8 +173,16 @@ p {
     box-shadow: 2px 2px 8px 0px rgba(0, 0, 0, 0.08) !important;
 }
 
+
+
 .animation-card:hover {
     box-shadow: 0px 15px 35px 0px rgba(0, 0, 0, 0.1) !important;
+}
+
+@media (max-width: 768px) {
+    .animation-card:hover {
+        transform: translateY(0px) !important;
+    }
 }
 
 /* En global.css - Eliminar FOUC de todos los AOS */

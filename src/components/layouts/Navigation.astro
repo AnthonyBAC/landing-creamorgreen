@@ -1,23 +1,48 @@
 ---
 import { Image } from 'astro:assets';
+
+const { pathname } = Astro.url;
+
+// Función para determinar si un enlace está activo
+const isActive = (path: string) => {
+  if (path === '/') {
+    return pathname === '/';
+  }
+  if (path === '/servicios' || path === '/catalogo') {
+    // Para servicios y catálogo que están en la página principal como secciones
+    return pathname === '/';
+  }
+  if (path === '/proyectos') {
+    return pathname === '/proyectos' || pathname.startsWith('/proyectos/');
+  }
+  return pathname === path;
+};
+
+// Enlaces de navegación con sus configuraciones
+const navLinks = [
+  { href: '/', label: 'Inicio', key: 'home' },
+  { href: '/#servicios', label: 'Servicios', key: 'servicios' },
+  { href: '/proyectos', label: 'Noticias', key: 'proyectos' },
+  { href: '/#catalogo', label: 'Catálogo', key: 'catalogo' },
+];
 ---
 
 <nav class='nav-container'>
   <!-- Lado izquierdo (Desktop) -->
   <div class='nav-left desktop-nav'>
     <ul class='nav-list'>
-      <a href='/'>
-        <li class='nav-items'>Inicio</li>
-      </a>
-      <a href='/servicios'>
-        <li class='nav-items'>Servicios</li>
-      </a>
-      <a href='/proyectos'>
-        <li class='nav-items'>Noticias</li>
-      </a>
-      <a href='/catalogo'>
-        <li class='nav-items'>Catálogo</li>
-      </a>
+      {
+        navLinks.map(link => (
+          <a
+            href={link.href}
+            data-nav={link.key}
+          >
+            <li class={`nav-items ${isActive(link.href) ? 'active' : ''}`}>
+              {link.label}
+            </li>
+          </a>
+        ))
+      }
     </ul>
   </div>
 
@@ -82,35 +107,20 @@ import { Image } from 'astro:assets';
     </div>
     <div class='mobile-menu-content'>
       <ul class='mobile-nav-list'>
-        <li>
-          <a
-            href='/'
-            class='mobile-nav-item'
-            >Inicio</a
-          >
-        </li>
-        <li>
-          <a
-            href='/servicios'
-            class='mobile-nav-item'
-            >Servicios</a
-          >
-        </li>
-        <li>
-          <a
-            href='/proyectos'
-            class='mobile-nav-item'
-            >Noticias</a
-          >
-        </li>
-        <li>
-          <a
-            href='/catalogo'
-            class='mobile-nav-item'
-            >Catálogo</a
-          >
-        </li>
-        <hr class='w-full h-[1px] bg-[var(--borders)] mb-4' />
+        {
+          navLinks.map(link => (
+            <li>
+              <a
+                href={link.href}
+                class={`mobile-nav-item ${isActive(link.href) ? 'active' : ''}`}
+                data-nav={link.key}
+              >
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+        <hr class='w-full h-[1px] bg-[var(--borders)] mt-4 mb-2' />
         <li>
           <a
             class='instagram-button'
@@ -167,7 +177,29 @@ import { Image } from 'astro:assets';
   .nav-items {
     @apply text-[var(--text-colors)];
     @apply text-base;
-    @apply transition-all duration-500 cursor-pointer hover:text-[var(--bg-color-green)] hover:translate-y-[-2px];
+    @apply transition-all duration-500 cursor-pointer;
+    @apply hover:text-[#0F555A] hover:translate-y-[-2px];
+    @apply relative;
+  }
+
+  /* Estilos para el estado activo */
+  .nav-items.active {
+    @apply text-[#0F555A] font-semibold;
+  }
+
+  .nav-items.active {
+    animation: activeSlideIn 0.3s ease-in-out;
+  }
+
+  @keyframes activeSlideIn {
+    from {
+      transform: translateY(2px);
+      opacity: 0.8;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
   }
 
   .instagram-button {
@@ -259,14 +291,21 @@ import { Image } from 'astro:assets';
     @apply border-b border-gray-200;
     @apply transition-colors duration-300;
     @apply cursor-pointer;
+    @apply relative;
   }
 
   .mobile-nav-item:hover {
-    @apply text-[#7FB069];
+    @apply text-[var(--bg-color-green)];
   }
 
   .mobile-nav-item:last-child {
     @apply border-b-0;
+  }
+
+  /* Estado activo para móvil */
+  .mobile-nav-item.active {
+    @apply text-[var(--text-button)] font-semibold;
+    @apply bg-[#0F555A] rounded-md px-4 mx-[-16px] shadow-lg;
   }
 
   /* Clases de control de visibilidad */
@@ -313,10 +352,10 @@ import { Image } from 'astro:assets';
   const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
 
   function toggleMenu() {
-    hamburgerBtn?.classList.toggle('active');
-    mobileMenu?.classList.toggle('active');
+    if (hamburgerBtn) hamburgerBtn.classList.toggle('active');
+    if (mobileMenu) mobileMenu.classList.toggle('active');
 
-    if (mobileMenu?.classList.contains('active')) {
+    if (mobileMenu && mobileMenu.classList.contains('active')) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
@@ -324,18 +363,20 @@ import { Image } from 'astro:assets';
   }
 
   function closeMenu() {
-    hamburgerBtn?.classList.remove('active');
-    mobileMenu?.classList.remove('active');
+    if (hamburgerBtn) hamburgerBtn.classList.remove('active');
+    if (mobileMenu) mobileMenu.classList.remove('active');
     document.body.style.overflow = '';
   }
 
   // Solo agregar listeners si existen
-  hamburgerBtn?.addEventListener('click', toggleMenu);
-  menuOverlay?.addEventListener('click', closeMenu);
+  if (hamburgerBtn) hamburgerBtn.addEventListener('click', toggleMenu);
+  if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
 
-  mobileNavItems?.forEach(item => {
-    item.addEventListener('click', closeMenu);
-  });
+  if (mobileNavItems) {
+    mobileNavItems.forEach(function (item) {
+      item.addEventListener('click', closeMenu);
+    });
+  }
 
   window.addEventListener('resize', function () {
     if (window.innerWidth > 768) {
@@ -344,8 +385,90 @@ import { Image } from 'astro:assets';
   });
 
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && mobileMenu?.classList.contains('active')) {
+    if (
+      e.key === 'Escape' &&
+      mobileMenu &&
+      mobileMenu.classList.contains('active')
+    ) {
       closeMenu();
     }
   });
+
+  // Función para actualizar el estado activo basado en scroll (solo en la página principal)
+  function updateActiveNavOnScroll() {
+    if (window.location.pathname !== '/') return;
+
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('[data-nav]');
+
+    if (sections.length === 0) return;
+
+    let currentSection = '';
+    const scrollY = window.scrollY;
+
+    sections.forEach(function (section) {
+      const rect = section.getBoundingClientRect();
+      const sectionTop = rect.top + scrollY;
+      const sectionHeight = rect.height;
+      const scrollPosition = scrollY + 200; // Offset para activar antes
+
+      if (
+        scrollPosition >= sectionTop &&
+        scrollPosition < sectionTop + sectionHeight
+      ) {
+        currentSection = section.id;
+      }
+    });
+
+    // Si estamos en la parte superior, activar "inicio"
+    if (scrollY < 300 && !currentSection) {
+      currentSection = 'inicio';
+    }
+
+    // Actualizar estados activos
+    navLinks.forEach(function (link) {
+      const navKey = link.getAttribute('data-nav');
+      const navItem = link.querySelector('.nav-items') || link;
+
+      // Remover estado activo
+      navItem.classList.remove('active');
+
+      // Aplicar estado activo según la sección
+      if (
+        navKey === 'home' &&
+        (currentSection === 'inicio' || !currentSection)
+      ) {
+        navItem.classList.add('active');
+      } else if (navKey === 'servicios' && currentSection === 'servicios') {
+        navItem.classList.add('active');
+      } else if (navKey === 'catalogo' && currentSection === 'catalogo') {
+        navItem.classList.add('active');
+      }
+    });
+  }
+
+  // Solo ejecutar el scroll listener en la página principal
+  if (window.location.pathname === '/') {
+    // Función para inicializar cuando el DOM esté completamente cargado
+    function initScrollNavigation() {
+      const sections = document.querySelectorAll('section[id]');
+
+      if (sections.length > 0) {
+        window.addEventListener('scroll', updateActiveNavOnScroll);
+        updateActiveNavOnScroll(); // Ejecutar una vez para establecer estado inicial
+      } else {
+        // Si no encuentra secciones, intentar de nuevo después de un delay
+        setTimeout(initScrollNavigation, 500);
+      }
+    }
+
+    // Usar múltiples eventos para asegurar que se ejecute
+    document.addEventListener('DOMContentLoaded', initScrollNavigation);
+    window.addEventListener('load', initScrollNavigation);
+
+    // También intentar inmediatamente si el documento ya está listo
+    if (document.readyState !== 'loading') {
+      initScrollNavigation();
+    }
+  }
 </script>

@@ -7,7 +7,6 @@ import Section3 from '~/components/Sections/3-Servicios.astro';
 import Section4 from '~/components/Sections/4-Proyects.astro';
 import TransitionSection from '~/components/Sections/TransitionSection.astro';
 import Catalogo from '~/components/Sections/Catalogo.astro';
-import Whatsapp from '~/components/ui/Whatsapp.astro';
 ---
 
 <BaseLayout
@@ -15,11 +14,38 @@ import Whatsapp from '~/components/ui/Whatsapp.astro';
   description='Transformamos oficinas y eventos con plantas y jardines únicos. +100 proyectos realizados en Santiago. Diseños personalizados que elevan cada espacio.'
   ogImage='/Logo-Creamor.svg'
 >
-  <Section0 />
-  <Section1 />
-  <Section2 />
-  <Section3 />
-  <TransitionSection />
-  <Section4 />
-  <Catalogo />
+  <!-- Hero Section con ID -->
+  <section id='inicio'>
+    <Section0 />
+  </section>
+
+  <!-- Sección 1 -->
+  <section>
+    <Section1 />
+  </section>
+
+  <!-- Sección 2 -->
+  <section>
+    <Section2 />
+  </section>
+
+  <!-- Servicios con ID -->
+  <section id='servicios'>
+    <Section3 />
+  </section>
+
+  <!-- Transición -->
+  <section>
+    <TransitionSection />
+  </section>
+
+  <!-- Proyectos -->
+  <section>
+    <Section4 />
+  </section>
+
+  <!-- Catálogo con ID -->
+  <section id='catalogo'>
+    <Catalogo />
+  </section>
 </BaseLayout>
