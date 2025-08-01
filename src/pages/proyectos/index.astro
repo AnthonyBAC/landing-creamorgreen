@@ -3,7 +3,6 @@ import BaseProyectLayout from '~/layouts/BaseProyectLayout.astro';
 import { Image } from 'astro:assets';
 import { getAllProjects } from '~/lib/strapi.js';
 
-// Obtener TODOS los proyectos
 const allProjects = await getAllProjects();
 ---
 
@@ -21,12 +20,13 @@ const allProjects = await getAllProjects();
           Proyectos
         </h1>
         <p class='projects-count'>
+          <!-- @ts-ignore -->
           {allProjects.length} proyectos realizados
         </p>
       </div>
 
-      <!-- Grid de TODOS los proyectos -->
       {
+        // @ts-ignore
         allProjects.map((proyecto, index) => (
           <div
             class='cards animation-card'
@@ -36,21 +36,24 @@ const allProjects = await getAllProjects();
             <div class='image-container'>
               <Image
                 class='image-style'
-                src={proyecto.featuredImage.url}
-                alt={proyecto.featuredImage.alt}
+                src={proyecto.imagenPrincipal}
+                alt={proyecto.titulo}
                 width={400}
                 height={400}
               />
             </div>
             <div class='cards-content'>
-              <h3 class='title-card'>{proyecto.title}</h3>
-              <p class='text-card'>{proyecto.shortDescription}</p>
+              <h3 class='title-card'>{proyecto.titulo}</h3>
+              <p class='text-card'>
+                {proyecto.contenido
+                  ?.find(item => item.tipo === 'parrafo')
+                  ?.texto?.substring(0, 150) + '...' ||
+                  'Descripción del proyecto disponible en el detalle completo.'}
+              </p>
               <div class='item-meta'>
-                <p class='meta-item'>📍 {proyecto.location}</p>
-                <p class='meta-item'>🌱 {proyecto.plantCount}+ Plantas</p>
-                <p class='meta-item'>
-                  ⏱️ {proyecto.duration} {proyecto.durationType}
-                </p>
+                <p class='meta-item'>📍 {proyecto.ubicacion}</p>
+                <p class='meta-item'>🌱 {proyecto.plantas} Plantas</p>
+                <p class='meta-item'>⏱️ {proyecto.tiempo}</p>
               </div>
               <a
                 href={`/proyectos/proyecto/${proyecto.slug}`}
@@ -91,12 +94,9 @@ const allProjects = await getAllProjects();
 <style>
   @reference 'tailwindcss';
 
-  /* === LAYOUT PRINCIPAL === */
   .bg-proyects {
     @apply bg-[var(--background2)];
   }
-
-  /* === HEADER === */
   .header-section {
     @apply mb-8;
   }
@@ -105,18 +105,14 @@ const allProjects = await getAllProjects();
     @apply text-gray-600 mt-2 text-sm;
   }
 
-  /* === INTRODUCCIÓN === */
   h1 {
     @apply text-balance;
   }
-
-  /* === CONTENEDOR DE TARJETAS === */
   .card-container {
     @apply grid grid-cols-1 gap-10 justify-center items-center p-4 xl:p-0 lg:pb-0 mt-[100px] lg:mt-[0];
     grid-template-rows: auto repeat(auto-fit, 400px) auto;
   }
 
-  /* === TARJETA PRINCIPAL === */
   .cards {
     @apply min-h-[400px] h-full bg-[var(--bg-cards)] p-4 lg:pl-0 grid grid-rows-[auto_1fr] grid-cols-[1fr] lg:grid-rows-[1fr] lg:grid-cols-[auto_1fr] gap-10;
     @apply w-full rounded-md;
@@ -127,7 +123,6 @@ const allProjects = await getAllProjects();
     @apply transform -translate-y-1 shadow-lg;
   }
 
-  /* === IMAGEN === */
   .image-container {
     @apply w-full h-full flex justify-center items-center lg:w-[500px] lg:h-[320px] pt-0 lg:pt-[45px];
     max-height: 320px !important;
@@ -146,7 +141,6 @@ const allProjects = await getAllProjects();
     @apply brightness-75 scale-105;
   }
 
-  /* === CONTENIDO TEXTO === */
   .cards-content {
     @apply grid grid-rows-[auto_1fr_auto_auto] items-start lg:p-[45px] gap-4;
   }
@@ -159,7 +153,6 @@ const allProjects = await getAllProjects();
     @apply line-clamp-5 overflow-hidden text-lg text-gray-700;
   }
 
-  /* === METADATA === */
   .item-meta {
     @apply flex flex-wrap gap-3;
   }
@@ -168,7 +161,6 @@ const allProjects = await getAllProjects();
     @apply text-sm bg-gray-100 px-3 py-1 rounded-full;
   }
 
-  /* === BOTÓN LEER MÁS === */
   .read-more {
     @apply inline-flex items-center gap-2 text-[#7fb069] font-medium transition-all duration-500 ease-in-out;
     @apply hover:text-[#5a8a4a] hover:translate-x-[10px];
@@ -183,7 +175,6 @@ const allProjects = await getAllProjects();
     @apply transform translate-x-1;
   }
 
-  /* === SECCIÓN DE INFORMACIÓN === */
   .info-section {
     @apply col-span-full mt-12;
   }
@@ -218,7 +209,6 @@ const allProjects = await getAllProjects();
     @apply border-2 border-[#7fb069] text-[#7fb069] hover:bg-[#7fb069] hover:text-white;
   }
 
-  /* === RESPONSIVE === */
   @media (max-width: 768px) {
     .cards {
       @apply grid-rows-[auto_1fr] grid-cols-[1fr];

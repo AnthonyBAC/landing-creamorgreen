@@ -27,48 +27,58 @@ const defaultHomepage = {
 };
 
 // VALORES POR DEFECTO PARA PROYECTOS
+// VALORES POR DEFECTO PARA PROYECTOS (adaptados a la estructura del mock)
 const defaultProyectos = [
   {
-    id: 1,
-    title: 'Restaurante Verde Providencia',
     slug: 'restaurante-verde-providencia',
-    shortDescription: 'Proyecto de ejemplo mientras se configura Strapi',
-    location: 'Las Condes',
-    plantCount: 40,
-    duration: 5,
-    durationType: 'semanas',
-    featuredImage: {
-      url: '/leaf-placeholder.svg',
-      alt: 'Restaurante Verde Providencia',
-    },
-    featured: true,
+    titulo: 'Restaurante Verde Providencia',
+    ubicacion: 'Las Condes, Santiago',
+    area: '80m²',
+    plantas: '30+',
+    tiempo: '2 semanas',
+    categoria: 'Restaurantes',
+    imagenPrincipal: '/leaf-placeholder.svg',
+    contenido: [
+      {
+        tipo: 'parrafo',
+        texto:
+          'Proyecto de ejemplo mientras se configura Strapi. Transformación completa de espacio gastronómico con elementos biofílicos.',
+      },
+    ],
   },
   {
-    id: 2,
-    title: 'Oficina Corporativa Sustentable',
     slug: 'oficina-corporativa-sustentable',
-    shortDescription: 'Proyecto de ejemplo mientras se configura Strapi',
-    location: 'Providencia',
-    plantCount: 60,
-    duration: 3,
-    durationType: 'semanas',
-    featuredImage: {
-      url: '/leaf-placeholder.svg',
-      alt: 'Oficina Corporativa',
-    },
-    featured: true,
+    titulo: 'Oficina Corporativa Sustentable',
+    ubicacion: 'Providencia, Santiago',
+    area: '150m²',
+    plantas: '60+',
+    tiempo: '3 semanas',
+    categoria: 'Oficinas',
+    imagenPrincipal: '/leaf-placeholder.svg',
+    contenido: [
+      {
+        tipo: 'parrafo',
+        texto:
+          'Proyecto de ejemplo mientras se configura Strapi. Diseño biofílico para mejorar el ambiente laboral y productividad.',
+      },
+    ],
   },
   {
-    id: 3,
-    title: 'Casa Familiar Ecológica',
     slug: 'casa-familiar-ecologica',
-    shortDescription: 'Proyecto de ejemplo mientras se configura Strapi',
-    location: 'Santiago',
-    plantCount: 25,
-    duration: 4,
-    durationType: 'semanas',
-    featuredImage: { url: '/leaf-placeholder.svg', alt: 'Casa Familiar' },
-    featured: true,
+    titulo: 'Casa Familiar Ecológica',
+    ubicacion: 'Santiago Centro',
+    area: '90m²',
+    plantas: '25+',
+    tiempo: '4 semanas',
+    categoria: 'Residencial',
+    imagenPrincipal: '/leaf-placeholder.svg',
+    contenido: [
+      {
+        tipo: 'parrafo',
+        texto:
+          'Proyecto de ejemplo mientras se configura Strapi. Integración de elementos naturales en espacio familiar.',
+      },
+    ],
   },
 ];
 

@@ -1,5 +1,5 @@
 ---
-import { content } from '~/data/Catalogo';
+import { catalog, proyects } from '~/data/mockCatalogData';
 
 const { catalogPDF = { url: '/catalogo.pdf', name: 'Catálogo' } } = Astro.props;
 ---
@@ -13,8 +13,8 @@ const { catalogPDF = { url: '/catalogo.pdf', name: 'Catálogo' } } = Astro.props
       data-aos='fade-right'
       data-aos-delay='200'
     >
-      <h1>{content[0].title}</h1>
-      <h2>{content[0].subtitle}</h2>
+      <h1>{catalog.title}</h1>
+      <h2>{catalog.subtitle}</h2>
 
       <a
         href={catalogPDF.url}
@@ -27,8 +27,8 @@ const { catalogPDF = { url: '/catalogo.pdf', name: 'Catálogo' } } = Astro.props
       data-aos='fade-left'
       data-aos-delay='200'
     >
-      <h1>{content[0].title}</h1>
-      <h2>{content[0].subtitle}</h2>
+      <h1>{proyects.title}</h1>
+      <h2>{proyects.subtitle}</h2>
 
       <a
         href='/proyectos'

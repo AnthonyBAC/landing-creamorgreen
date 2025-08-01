@@ -37,24 +37,28 @@ const {
             <div class='image-container'>
               <Image
                 class='image-style'
-                src={proyecto.featuredImage.url}
-                alt={proyecto.featuredImage.alt}
+                src={proyecto.imagenPrincipal}
+                alt={proyecto.titulo}
                 width={400}
                 height={200}
               />
             </div>
             <div class='cards-content'>
-              <h3 class='title-card'>{proyecto.title}</h3>
-              <p class='text-card'>{proyecto.shortDescription}</p>
+              <h3 class='title-card'>{proyecto.titulo}</h3>
+              <p class='text-card'>
+                {proyecto.contenido
+                  //@ts-ignore
+                  ?.find(item => item.tipo === 'parrafo')
+                  ?.texto?.substring(0, 150) + '...' ||
+                  'Descripción del proyecto disponible en el detalle completo.'}
+              </p>
               <div class='item-meta'>
-                <p class='meta-item'>📍 {proyecto.location}</p>
-                <p class='meta-item'>🌱 {proyecto.plantCount}+ Plantas</p>
-                <p class='meta-item'>
-                  ⏱️ {proyecto.duration} {proyecto.durationType}
-                </p>
+                <p class='meta-item'>📍 {proyecto.ubicacion}</p>
+                <p class='meta-item'>🌱 {proyecto.plantas}+ Plantas</p>
+                <p class='meta-item'>⏱️ {proyecto.tiempo}</p>
               </div>
               <a
-                href={`/proyectos/${proyecto.slug}`}
+                href={`/proyectos/proyecto/${proyecto.slug}`}
                 class='read-more'
               >
                 Leer caso completo

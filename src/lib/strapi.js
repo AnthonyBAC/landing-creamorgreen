@@ -6,7 +6,8 @@
 //   return response.json();
 // }
 
-import { mockHomepage, mockProyectos, mockFAQ } from '~/data/mockData';
+import { mockHomepage, mockFAQ } from '~/data/mockData';
+import { proyectos } from '~/data/mockProyectData';
 
 // switch
 const USE_MOCK_DATA = true;
@@ -60,7 +61,7 @@ export async function getFAQ() {
 
 export async function getFeaturedProjects() {
   if (USE_MOCK_DATA) {
-    return allMockProjects.filter(project => project.featured);
+    return proyectos.slice(0, 3); // <-- CAMBIAR ESTO
   }
 
   // try {
@@ -102,140 +103,23 @@ export function getImageUrl(image) {
 }
 
 // Mock data para todos los proyectos (agregar antes de getAllProjects)
-const allMockProjects = [
-  // Los 3 proyectos originales
-  {
-    id: 1,
-    title: 'Restaurante Verde Providencia',
-    slug: 'restaurante-verde-providencia',
-    shortDescription: 'Proyecto de ejemplo mientras se configura Strapi',
-    location: 'Las Condes',
-    plantCount: 40,
-    duration: 5,
-    durationType: 'semanas',
-    featuredImage: {
-      url: '/slide_image-1.jpg',
-      alt: 'Restaurante Verde Providencia',
-    },
-    featured: true,
-  },
-  {
-    id: 2,
-    title: 'Oficina Corporativa Sustentable',
-    slug: 'oficina-corporativa-sustentable',
-    shortDescription: 'Proyecto de ejemplo mientras se configura Strapi',
-    location: 'Providencia',
-    plantCount: 60,
-    duration: 3,
-    durationType: 'semanas',
-    featuredImage: {
-      url: '/slide_image-2.jpg',
-      alt: 'Oficina Corporativa',
-    },
-    featured: true,
-  },
-  {
-    id: 3,
-    title: 'Casa Familiar Ecológica',
-    slug: 'casa-familiar-ecologica',
-    shortDescription: 'Proyecto de ejemplo mientras se configura Strapi',
-    location: 'Santiago',
-    plantCount: 25,
-    duration: 4,
-    durationType: 'semanas',
-    featuredImage: { url: '/slide_image-3.jpg', alt: 'Casa Familiar' },
-    featured: true,
-  },
-  // Los 3 proyectos adicionales
-  {
-    id: 4,
-    title: 'Centro Comercial Biofílico',
-    slug: 'centro-comercial-biofilico',
-    shortDescription:
-      'Transformación de espacios comerciales con jardines verticales',
-    location: 'Las Condes',
-    plantCount: 80,
-    duration: 6,
-    durationType: 'semanas',
-    featuredImage: {
-      url: '/slide_image-4.jpg',
-      alt: 'Centro Comercial Biofílico',
-    },
-    featured: false,
-  },
-  {
-    id: 5,
-    title: 'Hotel Boutique Verde',
-    slug: 'hotel-boutique-verde',
-    shortDescription: 'Diseño biofílico para experiencia de huéspedes única',
-    location: 'Providencia',
-    plantCount: 45,
-    duration: 4,
-    durationType: 'semanas',
-    featuredImage: {
-      url: '/slide_image-5.jpg',
-      alt: 'Hotel Boutique Verde',
-    },
-    featured: false,
-  },
-  {
-    id: 6,
-    title: 'Startup Tech Green Office',
-    slug: 'startup-tech-green-office',
-    shortDescription:
-      'Oficina moderna con elementos naturales para startup tecnológica',
-    location: 'Santiago',
-    plantCount: 35,
-    duration: 3,
-    durationType: 'semanas',
-    featuredImage: {
-      url: '/leaf-placeholder.svg',
-      alt: 'Startup Tech Office',
-    },
-    featured: false,
-  },
-  {
-    id: 7,
-    title: 'Startup Tech Green Office',
-    slug: 'startup-tech-green-office',
-    shortDescription:
-      'Oficina moderna con elementos naturales para startup tecnológica',
-    location: 'Santiago',
-    plantCount: 35,
-    duration: 3,
-    durationType: 'semanas',
-    featuredImage: {
-      url: '/leaf-placeholder.svg',
-      alt: 'Startup Tech Office',
-    },
-    featured: false,
-  },
-  {
-    id: 8,
-    title: 'Startup Tech Green Office',
-    slug: 'startup-tech-green-office',
-    shortDescription:
-      'Oficina moderna con elementos naturales para startup tecnológica',
-    location: 'Santiago',
-    plantCount: 35,
-    duration: 3,
-    durationType: 'semanas',
-    featuredImage: {
-      url: '/leaf-placeholder.svg',
-      alt: 'Startup Tech Office',
-    },
-    featured: false,
-  },
-];
 
-// Y cambiar la función getAllProjects():
 export async function getAllProjects() {
   if (USE_MOCK_DATA) {
-    return allMockProjects;
+    return proyectos;
   }
 
-  // Cuando esté Strapi configurado:
-  // const response = await fetch(`${STRAPI_URL}/api/projects?populate=*`);
-  // const data = await response.json();
-  // return data.data;
+  // try {
+  //   const response = await fetch(`${STRAPI_URL}/api/proyectos?populate=*`);
+  //
+  //   if (!response.ok) {
+  //     throw new Error(`Error: ${response.status}`);
+  //   }
+  //
+  //   const data = await response.json();
+  //   return data.data;
+  // } catch (error) {
+  //   console.error('Error fetching projects:', error);
+  //   return [];
+  // }
 }
